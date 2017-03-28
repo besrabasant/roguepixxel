@@ -1,0 +1,14 @@
+.revealer-wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0vh;
+    left: 0vw;
+    .revealer-layer {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+}

@@ -1,0 +1,77 @@
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin box-shadow($value) {
+    -webkit-box-shadow: $value;
+    -moz-box-shadow: $value;
+    -ms-box-shadow: $value;
+    -o-box-shadow: $value;
+    box-shadow: $value;
+}
+
+@mixin box-sizing($value) {
+    -webkit-box-sizing: $value;
+    -moz-box-sizing: $value;
+    -ms-box-sizing: $value;
+    -o-box-sizing: $value;
+    box-sizing: $value;
+}
+
+@mixin transform($value) {
+    -ms-transform: $value;
+    -moz-transform: $value;
+    -webkit-transform: $value;
+    -o-transform: $value;
+    transform: $value;
+}
+
+@mixin transform-origin($value) {
+    -ms-transform-origin: $value;
+    -moz-transform-origin: $value;
+    -webkit-transform-origin: $value;
+    -o-transform-origin: $value;
+    transform-origin: $value;
+}
+
+@mixin theme-green-opacity ($opacity) {
+    background-color: rgba($theme-green, $opacity);
+}
+
+@mixin background-opacity ($color, $opacity) {
+    background-color: rgba($color, $opacity);
+}
+
+@mixin animation ($value) {
+    -webkit-animation: $value;
+    -moz-animation: $value;
+    -o-animation: $value;
+    animation: $value;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@mixin transition($value) {
+    -ms-transition: $value;
+    -moz-transition: $value;
+    -webkit-transition: $value;
+    -o-transition: $value;
+    transition: $value;
+}

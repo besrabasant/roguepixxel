@@ -1,0 +1,245 @@
+@include keyframes (loaded) {
+    0% {
+        background-color: $dark-bg-color;
+    }
+    5% {
+        background-color: $theme-green;
+    }
+    10% {
+        background-color: $dark-bg-color;
+    }
+    15% {
+        background-color: $theme-green;
+    }
+    25% {
+        background-color: $dark-bg-color;
+    }
+    30% {
+        background-color: $theme-green;
+    }
+    40% {
+        background-color: $dark-bg-color;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        z-index: -2;
+    }
+}
+
+@include keyframes (tubelight) {
+    0% {
+        color: $dark-bg-color;
+    }
+    10% {
+        color: $theme-green;
+    }
+    20% {
+        color: $dark-bg-color;
+    }
+    30% {
+        color: $theme-green;
+    }
+    50% {
+        color: $dark-bg-color;
+    }
+    60% {
+        color: $theme-green;
+    }
+    80% {
+        color: $dark-bg-color;
+    }
+    90%,
+    100% {
+        color: $theme-green;
+    }
+}
+
+@include keyframes (tubelight-light) {
+    0% {
+        color: $primary-bg-color;
+    }
+    10% {
+        color: $theme-green;
+    }
+    20% {
+        color: $primary-bg-color;
+    }
+    30% {
+        color: $theme-green;
+    }
+    50% {
+        color: $primary-bg-color;
+    }
+    60% {
+        color: $theme-green;
+    }
+    80% {
+        color: $primary-bg-color;
+    }
+    90%,
+    100% {
+        color: $theme-green;
+    }
+}
+
+@include keyframes (tubelight-stroke) {
+    0% {
+        stroke: $dark-bg-color;
+    }
+    10% {
+        stroke: $theme-green;
+    }
+    20% {
+        stroke: $dark-bg-color;
+    }
+    30% {
+        stroke: $theme-green;
+    }
+    50% {
+        stroke: $dark-bg-color;
+    }
+    60% {
+        stroke: $theme-green;
+    }
+    80% {
+        stroke: $dark-bg-color;
+    }
+    90%,
+    100% {
+        stroke: $theme-green;
+    }
+}
+
+@include keyframes (breathe-stroke) {
+    0% {
+        stroke: $theme-green;
+    }
+    50% {
+        stroke: $dark-bg-color;
+    }
+    100% {
+        stroke: $theme-green;
+    }
+}
+
+@include keyframes (tubelight-fill) {
+    0% {
+        fill: $dark-bg-color;
+    }
+    10% {
+        fill: $theme-green;
+    }
+    20% {
+        fill: $dark-bg-color;
+    }
+    30% {
+        fill: $theme-green;
+    }
+    50% {
+        fill: $dark-bg-color;
+    }
+    60% {
+        fill: $theme-green;
+    }
+    80% {
+        fill: $dark-bg-color;
+    }
+    90%,
+    100% {
+        fill: $theme-green;
+    }
+}
+
+@include keyframes (breathe-fill) {
+    0% {
+        fill: $theme-green;
+    }
+    50% {
+        fill: $dark-bg-color;
+    }
+    100% {
+        fill: $theme-green;
+    }
+}
+
+@include keyframes (breathe) {
+    0% {
+        color: $theme-green;
+    }
+    50% {
+        color: $dark-bg-color;
+    }
+    100% {
+        color: $theme-green;
+    }
+}
+
+@include keyframes (breathe-light) {
+    0% {
+        color: $theme-green;
+    }
+    50% {
+        color: $primary-bg-color;
+    }
+    100% {
+        color: $theme-green;
+    }
+}
+
+@include keyframes(tubelight-background) {
+    0% {
+        background-color: $dark-bg-color;
+    }
+    10% {
+        background-color: $theme-green;
+    }
+    20% {
+        background-color: $dark-bg-color;
+    }
+    30% {
+        background-color: $theme-green;
+    }
+    50% {
+        background-color: $dark-bg-color;
+    }
+    60% {
+        background-color: $theme-green;
+    }
+    80% {
+        background-color: $dark-bg-color;
+    }
+    90%,
+    100% {
+        background-color: $theme-green;
+    }
+}
+
+@include keyframes(breathe-background) {
+    0% {
+        background-color: $theme-green;
+    }
+    50% {
+        background-color: $dark-bg-color;
+    }
+    100% {
+        background-color: $theme-green;
+    }
+}
+
+@include keyframes(flyplane) {
+    0% {
+        left: 0%;
+    }
+    50.5% {
+        left: 60%;
+    }
+    50.6% {
+        left: -60%;
+    }
+    100% {
+        left: 0%;
+    }
+}
