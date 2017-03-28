@@ -1,5 +1,6 @@
 import { TweenMax } from "gsap";
 import { homeScene } from "./homeScene";
+import { worksPageAnimation } from "./page-animations/works-page";
 import { servicesPageAnimation } from "./page-animations/services-page";
 import { contactPageAnimation } from "./page-animations/contact-page";
 import { DomListeners } from "./dom-listeners.js";
@@ -87,12 +88,12 @@ export class pagesAnimation {
 
         if (direction == 'top') {
             TweenMax.fromTo(worksNav, 0.8, { top: '-10%' }, { top: '8%', ease: Power3.easeOut });
-            TweenMax.fromTo(worksDetail, 0.8, { bottom: '40%' }, { bottom: '3%', ease: Power3.easeOut });
+            TweenMax.fromTo(worksDetail, 0.8, { bottom: '40%' }, { bottom: '3%', ease: Power3.easeOut, onComplete: () => { worksPageAnimation.init(); } });
         }
         if (direction == 'bottom') {
             if (homescene.isOn) homescene.stop();
             TweenMax.fromTo(worksNav, 0.75, { top: '70%' }, { top: '8%', ease: Power3.easeOut });
-            TweenMax.fromTo(worksDetail, 0.85, { bottom: '-40%' }, { bottom: '3%', ease: Power3.easeOut });
+            TweenMax.fromTo(worksDetail, 0.85, { bottom: '-40%' }, { bottom: '3%', ease: Power3.easeOut, onComplete: () => { worksPageAnimation.init(); } });
         }
     }
 
@@ -102,16 +103,16 @@ export class pagesAnimation {
 
         if (direction == 'top') {
             for (var i = 0; i < services.length; i++) {
-                TweenMax.fromTo(services[i], 0.7, { top: '15%', opacity: '0' }, { delay: (0.45 * (i + 0.5)), top: '0%', opacity: '1', ease: Power2.easeOut });
+                TweenMax.fromTo(services[i], 0.7, { top: '-20%', opacity: '0' }, { delay: (0.1 * i), top: '0%', opacity: '1', ease: Power2.easeOut });
             }
-            TweenMax.fromTo(getAQuote, 1.8, { top: '-30%', rotation: '0' }, { delay: 3.55, top: '80%', rotation: '20', transformOrigin: "right", ease: Bounce.easeOut, onComplete: () => { servicesPageAnimation.init(); } });
+            TweenMax.fromTo(getAQuote, 1.8, { top: '-30%', rotation: '0' }, { delay: 1, top: '80%', rotation: '20', transformOrigin: "right", ease: Bounce.easeOut, onComplete: () => { servicesPageAnimation.init(); } });
         }
         if (direction == 'bottom') {
             if (homescene.isOn) homescene.stop();
             for (var i = 0; i < services.length; i++) {
-                TweenMax.fromTo(services[i], 0.7, { top: '-20%', opacity: '0' }, { delay: (0.45 * (i + 0.5)), top: '0%', opacity: '1', ease: Power2.easeOut });
+                TweenMax.fromTo(services[i], 0.7, { top: '15%', opacity: '0' }, { delay: (0.1 * i), top: '0%', opacity: '1', ease: Power2.easeOut });
             }
-            TweenMax.fromTo(getAQuote, 1.5, { top: '110%', rotation: '0' }, { delay: 3.5, top: '80%', rotation: '20', ease: Bounce.easeOut, onComplete: () => { servicesPageAnimation.init(); } });
+            TweenMax.fromTo(getAQuote, 1.5, { top: '110%', rotation: '0' }, { delay: 1, top: '80%', rotation: '20', ease: Bounce.easeOut, onComplete: () => { servicesPageAnimation.init(); } });
         }
     }
 

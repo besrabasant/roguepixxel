@@ -180,12 +180,12 @@ main.container {
                     }
                     #green_overlay {
                         position: absolute;
-                        left: 0;
+                        left: -40%;
                         top: 0;
                         width: 40%;
                         height: 100%;
                         background-color: rgba($theme-green, 0.4);
-                        opacity: 0;
+                        opacity: 1;
                     }
                 }
                 #services_wrapper {

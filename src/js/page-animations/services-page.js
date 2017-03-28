@@ -67,35 +67,35 @@ export class servicesPageAnimation {
 
         for (var i = 0; i < services.length; i++) {
             services[i].children[0].removeEventListener('click', servicesPageAnimation.showServiceDetails, false);
-            if (services[i] !== service) {
-                TweenMax.to(services[i], 0.5, { delay: 0.1, opacity: '0', zIndex: '-2', ease: Power2.EaseOut });
-            } else {
+            TweenMax.to(services[i], 0.5, { delay: 0.08, opacity: '0', ease: Power2.EaseOut });
+            if (services[i] == service)
                 serviceBgWrapper.style.backgroundImage = document.querySelectorAll('.bg_image')[i].style.backgroundImage;
-            }
         }
+        TweenMax.to(services, 0.1, { delay: 0.5, zIndex: '-2', ease: Power0.EaseOut });
 
         service.dataset.left = window.getComputedStyle(service.children[0], null).getPropertyValue('left');
         service.dataset.top = window.getComputedStyle(service.children[0], null).getPropertyValue('top');
 
+
         var showServiceDetailsTimeline = new TimelineMax({ paused: true });
         showServiceDetailsTimeline.add(
-            TweenMax.to(document.getElementById('green_overlay'), 0.5, { opacity: 1, delay: 0.55 })
+            TweenMax.to(document.getElementById('green_overlay'), 0.5, {
+                left: '0%',
+                delay: 0.55,
+                onComplete: () => {
+                    service.style.zIndex = '3';
+                    service.children[0].style.left = '13%';
+                    service.children[0].style.top = '15%';
+                }
+            })
         );
-        showServiceDetailsTimeline.add(
-            TweenMax.to(service.children[0], 0.85, { top: '15%', left: '13%' }, 2)
-        );
-        showServiceDetailsTimeline.add(
-            TweenMax.fromTo(service.children[1], 0.5, { top: '53%' }, { visibility: 'visible', zIndex: 5, opacity: 1, top: '50%' })
-        );
-        showServiceDetailsTimeline.add(
-            TweenMax.fromTo(service.children[2], 0.5, { top: '18%' }, { visibility: 'visible', zIndex: 5, opacity: 1, top: '15%' })
-        );
-        showServiceDetailsTimeline.add(
-            TweenMax.fromTo(service.children[3], 0.5, { top: '20%' }, { visibility: 'visible', zIndex: 5, opacity: 1, top: '16.65%' })
-        );
+        showServiceDetailsTimeline.
+        to(service, 0.85, { opacity: '1' })
+            .fromTo(service.children[1], 0.85, { top: '53%' }, { visibility: 'visible', zIndex: 5, opacity: 1, top: '50%' }, '-=0.5')
+            .fromTo(service.children[2], 0.85, { top: '18%' }, { visibility: 'visible', zIndex: 5, opacity: 1, top: '15%' }, '-=0.5')
+            .fromTo(service.children[3], 0.85, { top: '20%' }, { visibility: 'visible', zIndex: 5, opacity: 1, top: '16.65%' }, '-=0.5');
 
         showServiceDetailsTimeline.play();
-
 
     }
 
@@ -106,35 +106,28 @@ export class servicesPageAnimation {
 
 
         var hideServiceDetailsTimeline = new TimelineMax({ paused: true });
-        hideServiceDetailsTimeline.add(
-            TweenMax.to(document.getElementById('green_overlay'), 0.5, { opacity: 0 })
-        );
-        hideServiceDetailsTimeline.add(
-            TweenMax.to([service.children[1], service.children[2], service.children[3]], 0.5, { opacity: 0 }));
-
-        hideServiceDetailsTimeline.add(
-            TweenMax.to([service.children[1], service.children[2], service.children[3]], 0.1, { visibility: 'hidden', zIndex: -2 }));
-
-        hideServiceDetailsTimeline.add(
-            TweenMax.to(service.children[0], 1, {
-                top: service.dataset.top,
-                left: service.dataset.left,
+        hideServiceDetailsTimeline.to(document.getElementById('green_overlay'), 0.5, { left: '-40%' })
+            .to([service.children[0], service.children[1], service.children[2], service.children[3]], 0.5, { opacity: 0 })
+            .to([service.children[1], service.children[2], service.children[3]], 0.1, { visibility: 'hidden', zIndex: -2 })
+            .to(service.children[0], 0.01, { top: service.dataset.top, left: service.dataset.left })
+            .to(services, 0.01, {
+                zIndex: '3',
                 onComplete: () => {
                     for (var i = 0; i < services.length; i++) {
-                        services[i].children[0].addEventListener('click', servicesPageAnimation.showServiceDetails, false);
-                        if (services[i] !== service) {
-                            TweenMax.to(services[i], 0.4, { delay: 0.1, opacity: '1', zIndex: '3', ease: Power2.EaseOut });
-                        } else {
+                        if (service == services[i]) {
+                            TweenMax.to(service.children[0], 0.5, { delay: 0.08, opacity: '1', ease: Power2.EaseOut });
                             TweenMax.fromTo(document.querySelectorAll('.bg_image')[i], 0.5, { opacity: 1 }, { opacity: 0 });
                         }
+                        services[i].children[0].addEventListener('click', servicesPageAnimation.showServiceDetails, false);
+                        TweenMax.to(services[i], 0.5, { delay: 0.08, opacity: '1', ease: Power2.EaseOut });
                     }
                     serviceBgWrapper.style.backgroundImage = document.querySelectorAll('.bg_image')[0].style.backgroundImage;
                     window.location.hash = '#!services';
+                    attachListeners(true);
                 }
-            }));
+            })
 
         hideServiceDetailsTimeline.play();
-        attachListeners(true);
     }
 
     static changeBackground(e) {
