@@ -4,7 +4,7 @@ import ExtractTextPlugin from "extract-text-webpack-plugin";
 import alias from 'whs/tools/alias';
 
 const uglify = new webpack.optimize.UglifyJsPlugin({
-    // compress: { warnings: false },
+    compress: { warnings: false },
     minimize: true
 });
 
@@ -83,6 +83,7 @@ const config = {
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'whs']
         }),
+        // uglify,
         extractCss
     ],
     resolve: {

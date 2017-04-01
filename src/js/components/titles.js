@@ -2,8 +2,8 @@ import * as WHS from 'whs';
 import Utils from '../Utils';
 import titlesTextures from "./titleTextures";
 
-var titleComp = new THREE.Mesh(new THREE.PlaneBufferGeometry(500, 250), (new THREE.MeshLambertMaterial({
-    color: 0x808080,
+var titleComp = new THREE.Mesh(new THREE.PlaneGeometry(500, 250), (new THREE.MeshLambertMaterial({
+    color: 0xffffff,
     map: titlesTextures.currentTexture(),
     transparent: true
 })));

@@ -1,5 +1,6 @@
 import { TweenMax } from "gsap";
 import { homeScene } from "./homeScene";
+import works from "./worksScene";
 import { worksPageAnimation } from "./page-animations/works-page";
 import { servicesPageAnimation } from "./page-animations/services-page";
 import { contactPageAnimation } from "./page-animations/contact-page";
@@ -19,13 +20,15 @@ function attachListeners(opt = false) {
     DomListeners.attachKeyPressListeners(App.onKeyPress, opt);
 }
 
-var homescene = new homeScene();
-homescene.start();
+export var homescene = new homeScene();
+servicesPageAnimation.init();
+worksPageAnimation.init();
 
 
 
 export class pagesAnimation {
     constructor() {
+
         return false;
     }
 
@@ -67,17 +70,26 @@ export class pagesAnimation {
     static animateHomepage(page, direction) {
         if (direction == 'top') {
             if (!homescene.isOn) homescene.start();
+            if (works.isOn) works.stop();
         }
     }
 
     static animateAboutUspage(page, direction) {
+        let pageComponents = page.children[0].children;
 
         if (direction == 'top') {
-            console.log('do something with homeScene');
+            if (works.isOn) works.stop();
+            for (var i = 0; i < pageComponents.length; i++) {
+                TweenMax.fromTo(pageComponents[i], 0.75, { top: '-20%' }, { delay: (0.1 * i), top: '0%', ease: Power2.easeOut });
+            }
         }
 
         if (direction == 'bottom') {
             if (homescene.isOn) homescene.stop();
+
+            for (var i = 0; i < pageComponents.length; i++) {
+                TweenMax.fromTo(pageComponents[i], 0.75, { top: '20%' }, { delay: (0.1 * i), top: '0%', ease: Power2.easeOut });
+            }
         }
 
     }
@@ -87,13 +99,24 @@ export class pagesAnimation {
         const worksDetail = page.children[0].children.works_detail;
 
         if (direction == 'top') {
+            if (!works.isOn) works.start();
+
             TweenMax.fromTo(worksNav, 0.8, { top: '-10%' }, { top: '8%', ease: Power3.easeOut });
-            TweenMax.fromTo(worksDetail, 0.8, { bottom: '40%' }, { bottom: '3%', ease: Power3.easeOut, onComplete: () => { worksPageAnimation.init(); } });
+            TweenMax.fromTo(worksDetail, 0.8, { bottom: '40%' }, { bottom: '3%', ease: Power3.easeOut });
+            works.planes.forEach((plane, index) => {
+                TweenMax.fromTo(plane.position, 0.75, { y: '120' }, { y: '0', ease: Power2.easeOut });
+            });
         }
         if (direction == 'bottom') {
             if (homescene.isOn) homescene.stop();
+
+            if (!works.isOn) works.start();
+
             TweenMax.fromTo(worksNav, 0.75, { top: '70%' }, { top: '8%', ease: Power3.easeOut });
-            TweenMax.fromTo(worksDetail, 0.85, { bottom: '-40%' }, { bottom: '3%', ease: Power3.easeOut, onComplete: () => { worksPageAnimation.init(); } });
+            TweenMax.fromTo(worksDetail, 0.85, { bottom: '-40%' }, { bottom: '3%', ease: Power3.easeOut });
+            works.planes.forEach((plane, index) => {
+                TweenMax.fromTo(plane.position, 0.75, { y: '-120' }, { y: '0', ease: Power2.easeOut });
+            });
         }
     }
 
@@ -105,14 +128,16 @@ export class pagesAnimation {
             for (var i = 0; i < services.length; i++) {
                 TweenMax.fromTo(services[i], 0.7, { top: '-20%', opacity: '0' }, { delay: (0.1 * i), top: '0%', opacity: '1', ease: Power2.easeOut });
             }
-            TweenMax.fromTo(getAQuote, 1.8, { top: '-30%', rotation: '0' }, { delay: 1, top: '80%', rotation: '20', transformOrigin: "right", ease: Bounce.easeOut, onComplete: () => { servicesPageAnimation.init(); } });
+            TweenMax.fromTo(getAQuote, 1.8, { top: '-30%', rotation: '0' }, { delay: 1, top: '80%', rotation: '20', transformOrigin: "right", ease: Bounce.easeOut });
         }
         if (direction == 'bottom') {
             if (homescene.isOn) homescene.stop();
+            if (works.isOn) works.stop();
+
             for (var i = 0; i < services.length; i++) {
                 TweenMax.fromTo(services[i], 0.7, { top: '15%', opacity: '0' }, { delay: (0.1 * i), top: '0%', opacity: '1', ease: Power2.easeOut });
             }
-            TweenMax.fromTo(getAQuote, 1.5, { top: '110%', rotation: '0' }, { delay: 1, top: '80%', rotation: '20', ease: Bounce.easeOut, onComplete: () => { servicesPageAnimation.init(); } });
+            TweenMax.fromTo(getAQuote, 1.5, { top: '110%', rotation: '0' }, { delay: 1, top: '80%', rotation: '20', ease: Bounce.easeOut });
         }
     }
 
@@ -121,14 +146,15 @@ export class pagesAnimation {
 
         if (direction == 'top') {
             for (var i = 0; i < prices.length; i++) {
-                TweenMax.fromTo(prices[i], 0.5, { top: '-30%', opacity: '0' }, { top: '0%', opacity: '1', delay: (0.4 * (i + 1.5)), ease: Power3.easeOut });
+                TweenMax.fromTo(prices[i], 0.7, { top: '-30%', opacity: '0' }, { top: '0%', opacity: '1', delay: (0.1 * i + 0.3), ease: Power3.easeOut });
             }
         }
         if (direction == 'bottom') {
             if (homescene.isOn) homescene.stop();
+            if (works.isOn) works.stop();
 
             for (var i = 0; i < prices.length; i++) {
-                TweenMax.fromTo(prices[i], 0.5, { top: '30%', opacity: '0' }, { top: '0%', opacity: '1', delay: (0.4 * (i + 1.5)), ease: Power3.easeOut });
+                TweenMax.fromTo(prices[i], 0.7, { top: '30%', opacity: '0' }, { top: '0%', opacity: '1', delay: (0.1 * i + 0.3), ease: Power3.easeOut });
             }
         }
     }
@@ -139,11 +165,14 @@ export class pagesAnimation {
 
         if (direction == 'bottom') {
             if (homescene.isOn) homescene.stop();
+            if (works.isOn) works.stop();
 
             TweenMax.fromTo(maps, 0.8, { top: '30%' }, { top: '0%', ease: Power3.easeOut });
             TweenMax.fromTo(contactArea, 0.75, { top: '85%' }, { top: '60%', ease: Power3.easeOut });
+
             detachListeners(true);
             contactPageAnimation.initEventListeners();
+
         }
     }
 }

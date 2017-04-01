@@ -4,6 +4,10 @@ import { Pages } from "./pages";
 var pages = new Pages(document.querySelectorAll('.page'));
 var lethargy = new Lethargy(7, 100, 0.05);
 
+window.addEventListener("hashchange", (e) => {
+    pages.changePage();
+}, false);
+
 export class App {
     constructor() {
         return false;

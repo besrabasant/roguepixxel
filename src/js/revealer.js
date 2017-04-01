@@ -17,6 +17,7 @@ function attachListeners() {
 
 var scrollBottomTimeline = new TimelineMax({ paused: true });
 var scrollTopTimeline = new TimelineMax({ paused: true });
+var scrollHorizontalTimeline = new TimelineMax({ paused: true });
 
 export class Revealer {
     constructor(options = {}) {
@@ -86,47 +87,42 @@ export class Revealer {
 
         this.initScrollBottomTimeLine(layers);
         this.initScrollTopTimeLine(layers);
+        this.initscrollHorizontalTimeline(layers);
     }
 
     initScrollBottomTimeLine(layers) {
 
-        scrollBottomTimeline.add(
-            TweenMax.fromTo(
+        scrollBottomTimeline
+            .fromTo(
                 layers[0],
-                this.animationDuration, { top: "100vh" }, {
+                this.animationDuration, { left: '0', top: "100vh" }, {
+                    left: '0',
                     top: "0vh",
                     ease: this.animationPreset.easeIn,
                     onStart: function() {
                         detachListeners();
                     }
                 })
-        );
-
-        scrollBottomTimeline.add(
-            TweenMax.fromTo(
+            .fromTo(
                 layers[1],
-                this.animationDuration, { top: "100vh" }, {
+                this.animationDuration, { left: '0', top: "100vh" }, {
+                    left: '0',
                     top: "0vh",
                     ease: this.animationPreset.easeIn,
-                }), this.animationDuration * 0.9
-        );
-
-        scrollBottomTimeline.add(
-
-            TweenMax.fromTo(
+                }, this.animationDuration * 0.9
+            )
+            .fromTo(
                 layers[2],
-                (this.animationDuration * 2), { top: "100vh" }, {
+                (this.animationDuration * 2), { left: '0', top: "100vh" }, {
+                    left: '0',
                     top: "-100vh",
                     ease: this.animationPreset.easeInOut,
                     onComplete: function() {
                         layers[2].style.bottom = "";
                     }
-                }), (this.animationDuration * 2) * 0.8
-        );
-
-        scrollBottomTimeline.add(
-
-            TweenMax.to(
+                }, (this.animationDuration * 2) * 0.8
+            )
+            .to(
                 layers[1],
                 this.animationDuration, {
                     top: "-100vh",
@@ -134,12 +130,9 @@ export class Revealer {
                     onComplete: function() {
                         layers[1].style.bottom = "";
                     }
-                }), (this.animationDuration * 3)
-        );
-
-        scrollBottomTimeline.add(
-
-            TweenMax.to(
+                }, (this.animationDuration * 3)
+            )
+            .to(
                 layers[0],
                 this.animationDuration, {
                     top: "-100vh",
@@ -148,53 +141,44 @@ export class Revealer {
                         layers[0].style.bottom = "";
                         attachListeners();
                     }
-                }), (this.animationDuration * 4) * 0.9
-        );
+                }, (this.animationDuration * 4) * 0.9
+            );
 
     }
 
     initScrollTopTimeLine(layers) {
 
-        scrollTopTimeline.add(
-
-            TweenMax.fromTo(
+        scrollTopTimeline
+            .fromTo(
                 layers[0],
-                this.animationDuration, { top: "-100vh" }, {
+                this.animationDuration, { left: '0', top: "-100vh" }, {
+                    left: '0',
                     top: "0vh",
                     ease: this.animationPreset.easeIn,
                     onStart: function() {
                         detachListeners();
                     }
                 })
-
-        );
-
-        scrollTopTimeline.add(
-
-            TweenMax.fromTo(
+            .fromTo(
                 layers[1],
-                this.animationDuration, { top: "-100vh" }, {
+                this.animationDuration, { left: '0', top: "-100vh" }, {
+                    left: '0',
                     top: "0vh",
                     ease: this.animationPreset.easeIn,
-                }), this.animationDuration * 0.9
-        );
-
-        scrollTopTimeline.add(
-
-            TweenMax.fromTo(
+                }, this.animationDuration * 0.9
+            )
+            .fromTo(
                 layers[2],
-                (this.animationDuration * 2), { top: "-100vh" }, {
+                (this.animationDuration * 2), { left: '0', top: "-100vh" }, {
+                    left: '0',
                     top: "100vh",
                     ease: this.animationPreset.easeInOut,
                     onComplete: function() {
                         layers[2].style.bottom = "";
                     }
-                }), (this.animationDuration * 2) * 0.8
-        );
-
-        scrollTopTimeline.add(
-
-            TweenMax.to(
+                }, (this.animationDuration * 2) * 0.8
+            )
+            .to(
                 layers[1],
                 this.animationDuration, {
                     top: "100vh",
@@ -202,12 +186,9 @@ export class Revealer {
                     onComplete: function() {
                         layers[1].style.bottom = "";
                     }
-                }), (this.animationDuration * 3)
-        );
-
-        scrollTopTimeline.add(
-
-            TweenMax.to(
+                }, (this.animationDuration * 3)
+            )
+            .to(
                 layers[0],
                 this.animationDuration, {
                     top: "100vh",
@@ -216,9 +197,64 @@ export class Revealer {
                         layers[0].style.bottom = "";
                         attachListeners();
                     }
-                }), (this.animationDuration * 4) * 0.9
-        );
+                }, (this.animationDuration * 4) * 0.9
+            );
 
+    }
+
+    initscrollHorizontalTimeline(layers) {
+        var duration = this.animationDuration + 0.05;
+
+        scrollHorizontalTimeline
+            .fromTo(
+                layers[0],
+                duration, { top: '0', left: "-100vw" }, {
+                    top: '0',
+                    left: "0vw",
+                    ease: this.animationPreset.easeIn,
+                    onStart: function() {
+                        detachListeners();
+                    }
+                })
+            .fromTo(
+                layers[1],
+                duration, { top: "0", left: '-100vw' }, {
+                    top: "0",
+                    left: "0vw",
+                    ease: this.animationPreset.easeIn,
+                }, duration * 0.9)
+            .fromTo(
+                layers[2],
+                (duration * 2), { top: "0", left: '-100vw' }, {
+                    top: "0",
+                    left: "100vw",
+                    ease: this.animationPreset.easeInOut,
+                    onComplete: function() {
+                        layers[2].style.bottom = "";
+                    }
+                }, (duration) * 0.8
+            )
+            .to(
+                layers[1],
+                duration, {
+                    left: "100vw",
+                    ease: this.animationPreset.easeOut,
+                    onComplete: function() {
+                        layers[1].style.bottom = "";
+                    }
+                }, (duration * 3)
+            )
+            .to(
+                layers[0],
+                duration, {
+                    left: "100vw",
+                    ease: this.animationPreset.easeOut,
+                    onComplete: function() {
+                        layers[0].style.bottom = "";
+                        attachListeners();
+                    }
+                }, (duration * 4) * 0.9
+            );
     }
 
     animateRevealBottom() {
@@ -227,6 +263,14 @@ export class Revealer {
 
     animateRevealTop() {
         scrollTopTimeline.restart();
+    }
+
+    animateRevealLeft() {
+        scrollHorizontalTimeline.restart();
+    }
+
+    animateRevealRight() {
+        scrollHorizontalTimeline.reverse(0);
     }
 
 }

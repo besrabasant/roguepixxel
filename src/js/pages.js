@@ -1,9 +1,10 @@
 import { Revealer } from "./revealer";
 import { navMenu } from "./navMenu";
-import { pagesAnimation } from './pagesAnimation';
+import { homescene, pagesAnimation } from './pagesAnimation';
+import works from "./worksScene";
 
 var navmenu = new navMenu(document.querySelector('.navmenu'));
-var revealer = new Revealer();
+export var revealer = new Revealer();
 
 export class Pages {
     constructor(allPages) {
@@ -52,6 +53,14 @@ export class Pages {
         }
     }
 
+    changePage() {
+        for (var index = 0; index < this.pages.length; index++) {
+            if ('#!' + this.pages[index].id == window.location.hash) {
+                this.goToPage(this, index);
+            }
+        };
+    }
+
     scrollAnimationCallback(pages = this) {
         pages.pages[pages.previousPageIndex].classList.remove('page-current');
         pages.setCurrentPage(pages.pages[pages.currentPageIndex]);
@@ -68,6 +77,12 @@ export class Pages {
     setCurrentPage(page) {
         page.classList.add('page-current');
         window.location.hash = '#!' + page.id;
+        if (window.location.hash == '#!home') {
+            homescene.start();
+        }
+        if (window.location.hash == '#!works') {
+            works.start();
+        }
     }
 
     getCurrentPageIndex() {
@@ -75,6 +90,16 @@ export class Pages {
     }
 
     getCurrentPage() {
+        if (window.location.hash != '') {
+            var p;
+            for (var index = 0; index < this.pages.length; index++) {
+                this.pages[index].classList.remove('page-current');
+                if ('#!' + this.pages[index].id == window.location.hash) {
+                    p = this.pages[index];
+                }
+            };
+            this.setCurrentPage(p);
+        }
         for (var index = 0; index < this.pages.length; index++) {
             if (this.isCurrentPage(this.pages[index])) {
                 return index;

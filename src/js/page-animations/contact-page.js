@@ -2,10 +2,40 @@ import { TweenMax } from "gsap";
 import { Lethargy } from "lethargy";
 import { DomListeners } from "../dom-listeners.js";
 import { App } from "../app.js";
+const popsicle = require('popsicle')
+
+
 
 var lethargy = new Lethargy(7, 100, 0.05);
 
 var el = document.getElementById('contact_area');
+var contactform = document.getElementById('contact_form');
+
+contactform.addEventListener('submit', (e) => {
+    e.preventDefault();
+    var data = {
+        name: contactform.querySelector('input[name]').value,
+        phone: contactform.querySelector('input[name]').value,
+        message: contactform.querySelector('textarea[name]').value
+    }
+
+    popsicle.request({
+            method: 'POST',
+            url: 'http://localhost/roguepixxel-alphav2/mail.php',
+            body: data,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+        .then(function(res) {
+            console.log(res.body);
+        }, function(err) {
+            console.log('err:', err);
+        });
+
+
+}, false);
+
 
 export class contactPageAnimation {
     constructor() {
@@ -72,7 +102,5 @@ export class contactPageAnimation {
             }
         }
     }
-
-
 
 }

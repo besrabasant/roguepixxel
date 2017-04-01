@@ -1,10 +1,11 @@
 import * as WHS from 'whs';
 import DigitalGlitchShader from './digital-glitch-shader';
 import titlesTextures from "./titleTextures";
+import glitch from "./glitch-audio";
 
 
 export default class GlitchPass extends WHS.Pass {
-    constructor(name, titles, dt_size) {
+    constructor(name, dt_size) {
         super(name);
 
         if (DigitalGlitchShader === undefined) console.error("THREE.GlitchPass relies on DigitalGlitchShader");
@@ -47,7 +48,7 @@ export default class GlitchPass extends WHS.Pass {
             this.uniforms['distortion_y'].value = THREE.Math.randFloat(0, 1);
             this.curF = 0;
             this.generateTrigger();
-        } else if (this.curF % this.randX < this.randX / 5) {
+        } else if (this.curF % this.randX < this.randX / 6) {
             this.uniforms['amount'].value = Math.random() / 90;
             this.uniforms['angle'].value = THREE.Math.randFloat(-Math.PI, Math.PI);
             this.uniforms['distortion_x'].value = THREE.Math.randFloat(0, 1);
@@ -56,9 +57,10 @@ export default class GlitchPass extends WHS.Pass {
             this.uniforms['seed_y'].value = THREE.Math.randFloat(-0.3, 0.3);
             //change Textures
             titlesTextures.randomizeTexture();
+            glitch.playAudio();
         } else if (this.goWild == false) {
-            //  pause texture
-            if (this.curF % this.randX < this.randX / 5 + 1) {
+            glitch.pauseAudio();
+            if (this.curF % this.randX < this.randX / 6 + 1) {
                 titlesTextures.iterateTexture();
             }
             this.uniforms['byp'].value = 1;
@@ -75,7 +77,7 @@ export default class GlitchPass extends WHS.Pass {
     }
 
     generateTrigger() {
-        this.randX = THREE.Math.randInt(120, 240);
+        this.randX = THREE.Math.randInt(250, 400);
     }
 
     generateHeightmap(dt_size) {

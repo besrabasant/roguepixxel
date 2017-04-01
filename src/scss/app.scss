@@ -6,57 +6,6 @@ body {
     font-family: 'Source Sans Pro';
 }
 
-.pace {
-    -webkit-pointer-events: none;
-    pointer-events: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    z-index: 2000;
-    position: fixed;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 8px;
-    width: 250px;
-    background: $secondary-bg-color;
-    border: 1px solid $theme-green;
-    overflow: hidden;
-}
-
-.pace .pace-progress {
-    @include box-sizing(border-box);
-    @include transform(translate3d(0, 0, 0));
-    max-width: 200px;
-    position: fixed;
-    z-index: 2000;
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 100%;
-    height: 100%;
-    width: 100%;
-    background: $theme-green;
-}
-
-.pace.pace-inactive {
-    display: none;
-}
-
-#loader-bg {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    background-color: $dark-bg-color;
-    z-index: 1991;
-}
-
-#loader-bg.loaded {
-    @include animation(loaded 1s linear 0s forwards);
-}
-
 main.container {
     width: 100vw;
     height: 100vh;
@@ -81,7 +30,7 @@ main.container {
             z-index: -1;
             &.page-current {
                 visibility: visible;
-                z-index: 1;
+                z-index: 4;
             }
             &:nth-child(odd) {
                 background-color: $secondary-bg-color;
@@ -107,8 +56,11 @@ main.container {
                     display: inline-block;
                     position: absolute;
                     top: 8%;
+                    left: 3%;
+                    z-index: 3;
                     ul {
                         list-style: none;
+                        padding-left: 0;
                         // &:hover {
                         //     li:first-of-type {
                         //         @include transform(translateX(-8px));
@@ -134,6 +86,12 @@ main.container {
                         }
                     }
                 }
+                #works_viewer {
+                    position: absolute;
+                    top: 0;
+                    left: 33vw;
+                    height: 100vh;
+                }
                 #works_detail {
                     font-family: "Source Sans Pro";
                     position: absolute;
@@ -146,6 +104,13 @@ main.container {
                     color: $primary-bg-color;
                     @include box-sizing(border-box);
                     padding: 10px;
+                    article {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        padding: 0 10px;
+                        display: none;
+                    }
                     h3 {
                         font-size: 2em;
                         margin: 10px 0;
@@ -161,6 +126,11 @@ main.container {
                                 @include animation((tubelight-light 0.5s linear 0.15s forwards, breathe-light 3s linear 1.5s infinite));
                             }
                         }
+                    }
+                    p {
+                        font-size: 0.9em;
+                        line-height: 1.5;
+                        font-weight: 100;
                     }
                 }
                 #services_bg_wrapper {
@@ -212,7 +182,7 @@ main.container {
                             }
                         }
                         h3,
-                        p,
+                        .details,
                         .close_service {
                             position: absolute;
                             visibility: hidden;
@@ -227,12 +197,40 @@ main.container {
                             top: 50%;
                             width: 23%;
                         }
-                        p {
-                            font-size: 1.2em;
+                        .details {
+                            font-size: 1em;
                             line-height: 1.2;
                             left: 42.65%;
                             width: 33%;
                             top: 15%;
+                            line-height: 1.5;
+                            h4 {
+                                margin: 8px 0;
+                                font-size: 1.5em;
+                            }
+                            quote {
+                                color: $theme-green;
+                                text-align: center;
+                                font-weight: bold;
+                                display: block;
+                                font-size: 1.2em;
+                                margin: 0 8%;
+                                padding: 8px 3%;
+                                background-color: rgba($secondary-bg-color, 0.4);
+                                @include box-sizing(border-box);
+                                border-left: 4px solid rgba($theme-green, 1);
+                            }
+                            ul {
+                                margin: 0;
+                                li {
+                                    padding: 8px 0;
+                                    @include box-sizing(border-box);
+                                }
+                            }
+                            span {
+                                position: relative;
+                                width: 100%;
+                            }
                         }
                         .close_service {
                             position: absolute;
@@ -397,7 +395,10 @@ main.container {
                 #prices {
                     width: 100%;
                     height: 100%;
-                    padding: 8% 5%;
+                    padding: 5% 5%;
+                    background-image: url('../../dist/img/pricing-bg.jpg');
+                    background-repeat: no-repeat;
+                    background-size: cover;
                     @include box-sizing(border-box);
                     .price_block {
                         position: relative;
@@ -405,19 +406,88 @@ main.container {
                         float: left;
                         text-align: center;
                         cursor: pointer;
-                        padding: 20px 0;
-                        border-right: 1px solid $dark-bg-color;
-                        &:hover {
-                            background-color: $dark-bg-color;
-                            color: $theme-green;
-                        }
+                        padding: 20px 0.4%;
+                        min-height: 73vh;
+                        @include linear-gradient(rgba($dark-bg-color,
+                        0.0),
+                        rgba($dark-bg-color,
+                        0.0));
+                        @include transition((background 0.5s ease,
+                        transform 0.3s ease));
                         h3 {
+                            color: lighten($dark-bg-color, 20%);
                             margin: 0;
                             font-size: 2em;
+                            position: relative;
+                            &:before {
+                                position: absolute;
+                                content: "";
+                                height: 0.06em;
+                                width: 50%;
+                                background-color: #a7a7a7;
+                                left: 50%;
+                                bottom: -15px;
+                                @include border-radius(5%);
+                                @include transform( translateX(-50%));
+                            }
+                        }
+                        p {
+                            @include box-sizing(border-box);
+                            padding: 0 15px;
+                            min-height: 15px;
+                            &:nth-of-type(odd) {
+                                background-color: rgba($dark-bg-color, 0.05);
+                            }
+                            &.desc {
+                                min-height: 40px;
+                            }
+                            &.price {
+                                font-size: 3em;
+                                font-weight: lighter;
+                                color: $theme-green;
+                                margin: 30px 0 0;
+                                sup {
+                                    font-size: 0.5em;
+                                }
+                            }
+                            strong,
+                            span {
+                                display: block;
+                                padding: 5px 0;
+                            }
+                        }
+                        &:hover {
+                            @include linear-gradient(rgba($dark-bg-color,
+                            0.1),
+                            rgba($dark-bg-color,
+                            0.0));
+                            @include transform(scale(1.02));
+                            @include transition((background 0.8s ease,
+                            transform 0.5s ease));
+                            p {
+                                &.price {
+                                    color: darken($theme-green, 5%);
+                                }
+                                &:nth-of-type(odd) {
+                                    background-color: rgba($theme-green, 0.15);
+                                }
+                            }
                         }
                     }
                     .price_block:last-of-type {
                         border-right: none;
+                    }
+                    .t_n_c {
+                        width: 100%;
+                        position: absolute;
+                        @include transform(translateY(90vh));
+                        p {
+                            margin: 1px 0;
+                            font-size: 0.8em;
+                            strong {
+                                color: rgba($theme-green, 1);
+                            }
+                        }
                     }
                 }
                 #maps {
@@ -429,8 +499,14 @@ main.container {
                     padding: 0 10%;
                     font-family: "Roboto";
                     color: $primary-bg-color;
+                    background-image: url('../../dist/img/contact-us.jpg');
+                    background-size: cover;
+                    background-repeat: no-repeat;
                     @include box-sizing(border-box);
-                    @include box-shadow(0 -2px 5px rgba(0, 0, 0, 0.5));
+                    @include box-shadow(0 -2px 5px rgba(0,
+                    0,
+                    0,
+                    0.5));
                     #address,
                     #social,
                     #social_feeds {
@@ -448,7 +524,8 @@ main.container {
                         }
                         a {
                             &:hover {
-                                @include animation( (tubelight 0.5s linear 0.15s forwards, breathe 3s linear 1.5s infinite));
+                                @include animation( (tubelight 0.5s linear 0.15s forwards,
+                                breathe-light 3s linear 1.5s infinite));
                             }
                         }
                     }
@@ -494,9 +571,9 @@ main.container {
                         #contact_form {
                             input,
                             textarea {
-                                background-color: $form-input-bg;
+                                background-color: rgba($form-input-bg, 0.7);
                                 margin: 5px;
-                                border: 1px solid $form-input-bg;
+                                border: 1px solid rgba($form-input-bg, 0.7);
                                 @include box-sizing(border-box);
                                 padding: 10px 8px;
                                 font-size: 1.2em;
@@ -504,8 +581,11 @@ main.container {
                                 float: left;
                                 color: $primary-bg-color;
                                 font-family: "Roboto";
+                                @include transition((background-color 0.5s ease,
+                                border-color 0.5s ease));
                                 &:focus {
-                                    border: 1px solid $form-input-border;
+                                    border-color: rgba($theme-green, 0.7);
+                                    background-color: rgba($form-input-bg, 0.9);
                                 }
                             }
                             input {
@@ -531,18 +611,26 @@ main.container {
                                 font-size: 1.2em;
                                 cursor: pointer;
                                 overflow: hidden;
-                                @include box-shadow(0 0 5px 2px rgba(0, 0, 0, 0.8));
-                                @include transition(( background-color 0.3s ease-in, box-shadow 0.3s ease-in));
+                                @include box-shadow(0 0 5px 2px rgba(0,
+                                0,
+                                0,
+                                0.3));
+                                @include transition(( background-color 0.3s ease-in,
+                                box-shadow 0.3s ease-in));
                                 &:hover {
                                     color: $primary-bg-color;
                                     background-color: $theme-green;
-                                    @include box-shadow(0 0 5px 2px rgba(0, 0, 0, 0.6));
+                                    @include box-shadow(0 0 5px 2px rgba(0,
+                                    0,
+                                    0,
+                                    0.5));
                                     i {
-                                        @include animation(flyplane 0.5s ease-out forwards);
+                                        @include animation(flyplane 0.4s ease-out forwards);
                                     }
                                 }
                                 i {
                                     position: relative;
+                                    top: -2px;
                                     @include transform(rotate(45deg));
                                 }
                             }
@@ -550,11 +638,35 @@ main.container {
                     }
                 }
             }
+        }
+        #about-us>.page-components-container {
+            position: absolute;
+            top: 0;
+            padding: 15vh 20% 0;
+            text-align: center;
+            @include box-sizing(border-box);
+            background-image: url('../../dist/img/about-us.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
             h1 {
                 position: relative;
-                text-align: center;
-                top: 50%;
-                @include transform(translate(0, -100%, 0));
+                font-size: 3em;
+                color: rgba($theme-green, 1);
+            }
+            h3 {
+                color: $primary-bg-color;
+                position: relative;
+                font-size: 1.7em;
+                font-weight: lighter;
+            }
+            p {
+                color: $primary-bg-color;
+                position: relative;
+                font-size: 1.1em;
+                line-height: 1.5;
+                &.contact-details {
+                    margin-top: 10vh;
+                }
             }
         }
         #works>.page-components-container {
@@ -579,6 +691,15 @@ main.container {
             width: 20%;
             height: 100%;
             float: left;
+            .logo {
+                position: relative;
+                padding: 5px 50px 0;
+                @include box-sizing(border-box);
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
         }
         .navbar {
             position: relative;
@@ -604,7 +725,7 @@ main.container {
                     color: $primary-text-color;
                     text-decoration: none;
                     width: 100%;
-                    padding: 20px 0;
+                    padding: 18px 0;
                     display: block;
                     text-transform: uppercase;
                     font-family: 'Source Sans Pro-SemiBold';

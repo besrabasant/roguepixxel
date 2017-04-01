@@ -14,14 +14,14 @@ export default class Plexus {
             this.particleCount = 800;
             this.maxConnections = 50;
         }
-        this.minDistance = 70;
-        this.velocity = 0.5;
+        this.minDistance = 60;
+        this.velocity = 0.3;
         this.acceleration = new THREE.Vector3(0, 0, 0);
 
         this.r = 0.75 * ((window.innerHeight > window.innerWidth) ? window.innerHeight : window.innerWidth);
         this.rHalf = this.r / 2;
         this.rZ = 200;
-        this.maxSpeed = 0.7;
+        this.maxSpeed = 0.5;
         this.init_particles();
 
         this.plexusParticles = new PlexusParticles(Plexus);
@@ -56,7 +56,7 @@ export default class Plexus {
 
 
             Plexus.particlesData.push({
-                velocity: new THREE.Vector3(-this.velocity + Math.random() * this.velocity, -this.velocity + Math.random() * this.velocity, -this.velocity + Math.random() * this.velocity),
+                velocity: new THREE.Vector3(-this.velocity + Math.random() * this.velocity, -this.velocity + Math.random() * this.velocity, 0),
                 numConnections: 0
             });
 

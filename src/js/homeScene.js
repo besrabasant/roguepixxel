@@ -4,6 +4,7 @@ import GlitchPass from './components/glitch-pass';
 import { Logo, logoIsLoaded } from './components/logo';
 import titles from './components/titles';
 import Utils from './Utils';
+import glitch from "./components/glitch-audio";
 
 export class homeScene {
     constructor() {
@@ -14,11 +15,13 @@ export class homeScene {
 
         const postprocessor = new WHS.app.PostProcessorModule();
 
+        var cameraPos = (Utils.isMobileDevice()) ? new THREE.Vector3(0, 10, 500) : new THREE.Vector3(0, -60, 500);
+
 
         //SCENE INIT
 
         const camera = new WHS.app.CameraModule({
-            position: (Utils.isMobileDevice()) ? new THREE.Vector3(0, 10, 500) : new THREE.Vector3(0, -60, 500),
+            position: cameraPos,
             fov: 45,
             near: 0.1,
             far: 3000
@@ -28,6 +31,7 @@ export class homeScene {
             renderer: {
                 antialias: true,
                 shadowmap: {
+                    enabled: true,
                     type: THREE.PCFSoftShadowMap
                 },
                 shadowMapBias: 0.00001,
@@ -46,10 +50,10 @@ export class homeScene {
             }),
             scene,
             camera, renderer,
-            new WHS.controls.OrbitModule({
-                target: new THREE.Vector3(0, 0, 0),
-                follow: true
-            }),
+            // new WHS.controls.OrbitModule({
+            //     target: new THREE.Vector3(0, 0, 0),
+            //     follow: true
+            // }),
             new WHS.app.ResizeModule(),
             mouse,
             postprocessor
@@ -117,8 +121,11 @@ export class homeScene {
         const plexus = new Plexus();
         plexus.mesh.addTo(this.world);
 
+        var mousepos = new THREE.Vector3(0, 0, 0);
+
         document.addEventListener('mousemove', function() {
             plexus.component.onMouseMove(mouse.project());
+            mousepos = mouse.project().multiplyScalar(0.1);
         });
 
         // logo
@@ -135,10 +142,17 @@ export class homeScene {
             if (logoIsLoaded) {
                 logo.animate();
             }
+
+            camera.camera.position.x += 2 + (mousepos.x - camera.camera.position.x) * 0.05;
+            camera.camera.position.y += -3 + (mousepos.y - camera.camera.position.y) * 0.05;
+            camera.camera.native.lookAt(new THREE.Vector3(0, 0, 0));
         });
         loop.start(this.world);
 
         // glitch
+
+
+        glitch.addListener(camera.camera);
 
         postprocessor.createRenderPass(false);
 
@@ -156,6 +170,7 @@ export class homeScene {
 
     stop() {
         this.isOn = false;
+        glitch.pauseAudio();
         this.world.stop();
     }
 }

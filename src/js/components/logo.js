@@ -22,7 +22,8 @@ const material = new THREE.MeshPhongMaterial({
     specularMap: textures.smap,
     bumpMap: textures.bmap,
     bumpScale: 1,
-    shininess: 3000
+    shininess: 3000,
+    // wireframe: true
 });
 
 var cubeobj = {};

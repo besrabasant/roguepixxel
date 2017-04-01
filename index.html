@@ -9,28 +9,131 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Cache-control" content="public,max-age=31536000">
     <title>Rogue Pixxel | Web</title>
     <meta name="description" content="A small website development company from Ranchi, Jharkhand to amplify your big dreams. We focus on your expression of work and project it on the internet.">
     <meta name="keywords" content=" leading, good, best, website, websites, web development,mobile app,software, applications, development, in, ranchi, jharkhand, india, argora, digital, marketing, android app, mobile, mobile application, e-commerce, online store, seo in ranchi, all type of website development, website developer, brand, promotion">
     <meta name="author" content="the Rogue Pixxel">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="dist/css/style.css" />
+
+    <style>
+        .pace {
+            -webkit-pointer-events: none;
+            pointer-events: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            z-index: 2000;
+            position: fixed;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 8px;
+            width: 250px;
+            background: #dedede;
+            border: 1px solid #52b43c;
+            overflow: hidden;
+        }
+        
+        .pace .pace-progress {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            -o-box-sizing: border-box;
+            box-sizing: border-box;
+            -ms-transform: translate3d(0, 0, 0);
+            -moz-transform: translate3d(0, 0, 0);
+            -webkit-transform: translate3d(0, 0, 0);
+            -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+            max-width: 200px;
+            position: fixed;
+            z-index: 2000;
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 100%;
+            height: 100%;
+            width: 100%;
+            background: #52b43c;
+        }
+        
+        .pace.pace-inactive {
+            display: none;
+        }
+        
+        #loader-bg {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            background-color: #272727;
+            z-index: 1991;
+        }
+        
+        #loader-bg.loaded {
+            -webkit-animation: loaded 1s linear 0s forwards;
+            -moz-animation: loaded 1s linear 0s forwards;
+            -o-animation: loaded 1s linear 0s forwards;
+            animation: loaded 1s linear 0s forwards;
+        }
+    </style>
+
+    <script>
+        var cb = function() {
+            var sheets = [
+                'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+            ];
+            var h = document.getElementsByTagName('head')[0];
+
+            for (var i = 0; i < sheets.length; i++) {
+                var l = document.createElement('link');
+                l.rel = 'stylesheet';
+                l.href = sheets[i];
+                h.appendChild(l);
+            }
+        };
+
+        var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+            webkitRequestAnimationFrame || msRequestAnimationFrame;
+        if (raf) raf(cb);
+        else window.addEventListener('load', cb);
+    </script>
 </head>
 
 <body>
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-    <!--<div id="loader-bg">
+    <div id="loader-bg">
 
-    </div>-->
+    </div>
 
 
     <header class="header">
         <nav class="mainNav">
             <div class="brand">
+                <div class="logo"><img src="dist/img/logo.png" alt="The Rogue Pixxel"></div>
             </div>
             <ul class="navbar navmenu">
                 <li><a href="#!home">Home</a></li>
@@ -51,7 +154,15 @@
                 </div>
             </section>
             <section id="about-us" class="page">
-                <h1>About Us</h1>
+                <div class="page-components-container">
+                    <h1>We are a company of developers and designers.</h1>
+                    <h3>With passion in our hearts and hands on keyboard we believe everyone should have their presence felt in the digital world.</h3>
+                    <p>The Rogue Pix<small>x</small>el is a web and media development company. We offer websites, mobile applications, softwares, and media production for small to large scale industries. We are committed to take advantage of the every possible
+                        tools available in digital space. We are stationed at Ranchi Jharkhand, INDIA with capabilities to provide our services worldwide.</p>
+
+                    <p class="contact-details">Call us: 960-880-8008
+                        <br> Drop by: rogue pixxel IT Solutions, Pundag, Ranchi, Jharkhand, INDIA.</p>
+                </div>
             </section>
             <section id="works" class="page">
                 <div class="page-components-container">
@@ -71,10 +182,31 @@
                     <div id="works_detail">
                         <article>
                             <h3>PRANA Lounge
-                                <a class="visit" href="#"> <i class="fa fa-external-link"></i> </a>
+                                <a class="visit" href="http://www.pranalounge.in" title="Visit the Website" target="_blank"> <i class="fa fa-external-link"></i> </a>
                             </h3>
                             <p>
-                                <span class="detail">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a semper leo. Proin nibh turpis, condimentum maximus turpis et, vulputate fringilla nunc. Nam at dui augue.</span>
+                                <span class="detail">PRANA is a beautiful exclusive restaurant and lounge with cherish advantage of rooftop bar. Clearly, it's one of the beautiful unique places to be in our town Ranchi. For the website design we got our best possible designs
+                                    together to be up to the standards of Prana Lounge. After getting the designs together, Website development was completed by the cocktail of web technologies and our skills. Visit the website to feel the charm and drop by at Prana lounge while in Ranchi.
+</span>
+                            </p>
+                        </article>
+                        <article>
+                            <h3>KGBV Lapung
+                                <a class="visit" href="http://kgbvlapung.in/" title="Visit the Website" target="_blank"> <i class="fa fa-external-link"></i> </a>
+                            </h3>
+                            <p>
+                                <span class="detail">The KGBV(Kasturba Gandhi Balika vidyalaya) Schools exists in almost each area with objective to diminish the significant education gap between Genders due to disparity and poverty. We were approached by a KGBV School from
+                                    Lapung for a informational detailed website for their school, providing the details of School, Staff &amp; Students for the officials and general public to see and assess. So we needed a design to display school Achievements,
+                                    Events, Activities, Participation's with Statical performance and we came out with this simple yet elegant website.
+</span>
+                            </p>
+                        </article>
+                        <article>
+                            <h3>Aadhar Merchandise Ltd
+                                <a class="visit" href="http://amlimited.in/" title="Visit the Website" target="_blank"> <i class="fa fa-external-link"></i> </a>
+                            </h3>
+                            <p>
+                                <span class="detail">Aadhar Merchandise Ltd. is a marketing and distributor agency based in Ranchi that sells products of your daily needs. Visit the website to know more.</span>
                             </p>
                         </article>
                     </div>
@@ -114,9 +246,17 @@
                                 </svg>
                             </span>
                             <h3>Websites</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla enim velit, mollis et tristique a, rhoncus quis nunc. Aenean lacus tortor, dapibus eu vestibulum et, tempus id quam. Quisque mollis dictum sem sed facilisis. In
-                                porta ante leo, vitae mollis diam sodales ac. Fusce sed quam risus. Integer congue justo a enim laoreet, et auctor neque sollicitudin. Nam tincidunt odio tellus, id bibendum nisl ullamcorper vel. Suspendisse tempus quam
-                                non hendrerit mattis. In luctus, velit a lacinia posuere, ligula tortor finibus lorem, sit amet elementum ante dui quis sapien.</p>
+                            <div class="details">
+                                <p>Internet is the mighty tool or maybe <strong>"the pen"</strong>.</p>
+                                <p>A business that does not have a website is missing out on one of the most powerful marketing tools available. Websites make people easier to find your business, as most people always go online and research products and
+                                    companies before they make a decision.</p>
+                                <h4>Why?</h4>
+                                <ul>
+                                    <li><span>A good website helps you establish credibility as a business.</span></li>
+                                    <li><span>It gives the impression of a larger quality business company.</li>
+                                    <li><span>Clearly, there are a lot of small businesses that do not have website. There are various reason for this, but mostly it comes down to the belief that websites are expensive. In truth a website can be built for very little money and is cost-effective for the business. Remember! you don't need a giant hundred pages website, just a simple website that tells people about your company will be enough.</span></li>
+                                </ul>
+                            </div>
                             <div class="close_service"><span></span><span></span></div>
                         </div>
                         <div id="services/applications" class="service_block">
@@ -151,10 +291,18 @@
                                 </g>
                                 </svg>
                             </span>
-                            <h3>Applications</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla enim velit, mollis et tristique a, rhoncus quis nunc. Aenean lacus tortor, dapibus eu vestibulum et, tempus id quam. Quisque mollis dictum sem sed facilisis. In
-                                porta ante leo, vitae mollis diam sodales ac. Fusce sed quam risus. Integer congue justo a enim laoreet, et auctor neque sollicitudin. Nam tincidunt odio tellus, id bibendum nisl ullamcorper vel. Suspendisse tempus quam
-                                non hendrerit mattis. In luctus, velit a lacinia posuere, ligula tortor finibus lorem, sit amet elementum ante dui quis sapien.</p>
+                            <h3>Web Applications</h3>
+                            <div class="details">
+                                <p>A Web-based application can be used for various purposes such as Inventory management... Web applications replaces the traditional desktop management applications like HR management, billing Softwares and other management
+                                    softwares.
+                                </p>
+                                <h4>Why?</h4>
+                                <ul>
+                                    <li><span>Accessible Anywhere.<br><small>Unlike traditional softwares, Web Applications are accessible anytime, anywhere and via any Device with an Internet connection and a Web Browser.</small></span></li>
+                                    <li><span>Easily customisable.<br><small>Using web Application we can easily customize interface according to your changing needs and it will be reflected instantly without the need of Installing or updating the application.</small></span></li>
+                                    <li><span>Easier installation and maintenance.<br><small>With the web-based application installation and maintenance becomes less complicated. Once a new version or upgrade is done by us you can access it straight away and there is no need to upgrade in the PC of each and every system.</small></span></li>
+                                </ul>
+                            </div>
                             <div class="close_service"><span></span><span></span></div>
 
                         </div>
@@ -180,9 +328,14 @@
                                 </svg>
                             </span>
                             <h3>Mobile Apps</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla enim velit, mollis et tristique a, rhoncus quis nunc. Aenean lacus tortor, dapibus eu vestibulum et, tempus id quam. Quisque mollis dictum sem sed facilisis. In
-                                porta ante leo, vitae mollis diam sodales ac. Fusce sed quam risus. Integer congue justo a enim laoreet, et auctor neque sollicitudin. Nam tincidunt odio tellus, id bibendum nisl ullamcorper vel. Suspendisse tempus quam
-                                non hendrerit mattis. In luctus, velit a lacinia posuere, ligula tortor finibus lorem, sit amet elementum ante dui quis sapien.</p>
+                            <div class="details">
+                                <p>This is the era of smartphones, just having a live website is not enough for businesses looking to expand.</p>
+                                <p>A recent study showed that 45% of Google searches originate from mobile devices. The exponential growth the mobile devices has given birth to the mobile application development.</p>
+                                <h4>Why?</h4>
+                                <p>The fact is people tend to use their mobile phones and tablets when they look for any information, be it general or specific product/business. Today there is an app for everything from shopping, banking, to news and Information
+                                    sharing, Your business cannot afford to miss an opportunity to target this half of your audience.</p>
+                                <p>But that doesn't necessarily mean that you need a mobile application.</p>
+                            </div>
                             <div class="close_service"><span></span><span></span></div>
 
                         </div>
@@ -207,9 +360,16 @@
                                 </svg>
                             </span>
                             <h3>E - Commerce</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla enim velit, mollis et tristique a, rhoncus quis nunc. Aenean lacus tortor, dapibus eu vestibulum et, tempus id quam. Quisque mollis dictum sem sed facilisis. In
-                                porta ante leo, vitae mollis diam sodales ac. Fusce sed quam risus. Integer congue justo a enim laoreet, et auctor neque sollicitudin. Nam tincidunt odio tellus, id bibendum nisl ullamcorper vel. Suspendisse tempus quam
-                                non hendrerit mattis. In luctus, velit a lacinia posuere, ligula tortor finibus lorem, sit amet elementum ante dui quis sapien.</p>
+                            <div class="details">
+                                <p>Thinking about selling your products or services to an audience from all over the world? E-Commerce is the solution.</p>
+                                <p>E-Commerce syllabus of business to sell products and services online at real-time 24x7.In recent years, E-Commerce has seen the biggest growth in the world Marketplace.</p>
+                                <h4>Why?</h4>
+                                <ul>
+                                    <li><span>E-Commerce is convenient.<br> <small> E-Commerce provides freedom to the customers to buy your product and you to manage your Store at anytime from anywhere in the world. </small></span></li>
+                                    <li><span>E-Commerce can broaden your brand. <br> <small> With the ease of maintaining your online store and ROI, you can now increase your range of products for sale bringing in more customers and increasing diversity in the sales.</small></span></li>
+                                    <li><span>E-Commerce influences purchase decisions. <br> <small> Your website will be the showroom where customers can reset the products right for them and with the ability to purchase the product within a few clicks.</small></span></li>
+                                </ul>
+                            </div>
                             <div class="close_service"><span></span><span></span></div>
 
                         </div>
@@ -269,9 +429,15 @@
 
                             </span>
                             <h3>Digital Marketing</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla enim velit, mollis et tristique a, rhoncus quis nunc. Aenean lacus tortor, dapibus eu vestibulum et, tempus id quam. Quisque mollis dictum sem sed facilisis. In
-                                porta ante leo, vitae mollis diam sodales ac. Fusce sed quam risus. Integer congue justo a enim laoreet, et auctor neque sollicitudin. Nam tincidunt odio tellus, id bibendum nisl ullamcorper vel. Suspendisse tempus quam
-                                non hendrerit mattis. In luctus, velit a lacinia posuere, ligula tortor finibus lorem, sit amet elementum ante dui quis sapien.</p>
+                            <div class="details">
+                                <p>Digital marketing is the evolution of Traditional marketing , because of the ability of Internet to interact with the audience in real time.</p>
+                                <p>It is a great tool for businesses to grow.</p>
+                                <h4>Why?</h4>
+                                <ul>
+                                    <li><span>Engaging with your customers in every possible platform with minimal effort.</span></li>
+                                    <li><span>Delivering on what you promise helps develop a better relationship, as you can tell your customer on what is to come soon.</span></li>
+                                </ul>
+                            </div>
                             <div class="close_service"><span></span><span></span></div>
 
 
@@ -302,9 +468,15 @@
                                 </svg>
                             </span>
                             <h3>SEO</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla enim velit, mollis et tristique a, rhoncus quis nunc. Aenean lacus tortor, dapibus eu vestibulum et, tempus id quam. Quisque mollis dictum sem sed facilisis. In
-                                porta ante leo, vitae mollis diam sodales ac. Fusce sed quam risus. Integer congue justo a enim laoreet, et auctor neque sollicitudin. Nam tincidunt odio tellus, id bibendum nisl ullamcorper vel. Suspendisse tempus quam
-                                non hendrerit mattis. In luctus, velit a lacinia posuere, ligula tortor finibus lorem, sit amet elementum ante dui quis sapien.</p>
+                            <div class="details">
+                                <p>Search Engine Optimisation or SEO is a set of rules for website to follow in order to get better ranking in the Google searches thus driving more visits to the site and increasing the audience.
+                                    <br>SEO is a marketing outlet that can bring your business more qualified leads and customers.</p>
+                                <quote>"SEO makes it easier for people to find you"</quote>
+                                <h4>Why?</h4>
+                                <p>Somewhere around 80% - 90% of customer check online reviews before making a purchase, without SEO in place it would be harder for people to find your website and product.</p>
+                                <p>Without a SEO of people will have hard time finding you and when instead find your competitors. SEO brings a business traffic which intense create your brand awareness.</p>
+                                <p>There are over 2500 lakh websites on the Internet, SEO makes you stand out.</p>
+                            </div>
                             <div class="close_service"><span></span><span></span></div>
                         </div>
                     </div>
@@ -334,35 +506,73 @@
                 <div class="page-components-container">
                     <div id="prices">
                         <div class="price_block">
-                            <h3>Pack 1</h3>
-                            <p>feature 1</p>
-                            <p>feature 2</p>
-                            <p>feature 3</p>
-                            <p>feature 4</p>
+                            <h3>Basic</h3>
+                            <p class="price">&#8377; 8,499<sup>*</sup></p>
+                            <p class="desc">Basic 4 Page HTML Website/ Non Mobile Responsive</p>
+                            <p>-</p>
+                            <p>-</p>
+                            <p>No S.E.O.</p>
+                            <p>-</p>
+                            <p>No C.M.S.</p>
+                            <p>
+                                <strong>Suitable for:</strong>
+                                <span>Small Startup/Business</span>
+                                <span>Portfolio</span>
+                            </p>
                         </div>
 
                         <div class="price_block">
-                            <h3>Pack 2</h3>
-                            <p>feature 1</p>
-                            <p>feature 2</p>
-                            <p>feature 3</p>
-                            <p>feature 4</p>
+                            <h3>Economy</h3>
+                            <p class="price">&#8377; 12,999<sup>*</sup></p>
+                            <p class="desc">Basic 4 Page HTML based Website / Mobile Responsive</p>
+                            <p>1 GB with 50 GB Bandwidth</p>
+                            <p>2 email accounts</p>
+                            <p>No S.E.O.</p>
+                            <p>-</p>
+                            <p>No C.M.S.</p>
+                            <p>
+                                <strong>Suitable for:</strong>
+                                <span>Medium Scale Businesses</span>
+                                <span>N.G.O.s</span>
+                                <span>Educational Institutions</span>
+                            </p>
                         </div>
 
                         <div class="price_block">
-                            <h3>Pack 3</h3>
-                            <p>feature 1</p>
-                            <p>feature 2</p>
-                            <p>feature 3</p>
-                            <p>feature 4</p>
+                            <h3>Premium</h3>
+                            <p class="price">&#8377; 17,999<sup>*</sup></p>
+                            <p class="desc">Dynamic Website with a Small Database</p>
+                            <p>2 GB with 200 GB Bandwidth</p>
+                            <p>5 email accounts</p>
+                            <p>S.E.O</p>
+                            <p>Monthly Analytics</p>
+                            <p>Basic C.M.S.</p>
+                            <p>
+                                <strong>Suitable for:</strong>
+                                <span>Businesses requiring moderate content updation</span>
+                                <span>Enthusiatic Portfolio</span>
+                            </p>
                         </div>
 
                         <div class="price_block">
-                            <h3>Pack 4</h3>
-                            <p>feature 1</p>
-                            <p>feature 2</p>
-                            <p>feature 3</p>
-                            <p>feature 4</p>
+                            <h3>Enterprise</h3>
+                            <p class="price">&#8377; 24,999+<sup>*</sup></p>
+                            <p class="desc">Lightweight E/Commerce Website<sup>1</sup></p>
+                            <p>5 GB with 500 GB Bandwidth</p>
+                            <p>Unlimited Emails (as required)</p>
+                            <p>S.E.O</p>
+                            <p>Monthly Analytics</p>
+                            <p>Full fledged C.M.S.</p>
+                            <p>
+                                <strong>Suitable for:</strong>
+                                <span>Big Businesses</span>
+                                <span>E-Commerce</span>
+                                <span>Online Management systems</span>
+                            </p>
+                        </div>
+                        <div class="t_n_c">
+                            <p><strong>*</strong>: Prices can vary according to features provided with the website.</p>
+                            <p><strong>1</strong>: Payment Gateway charges not included.</p>
                         </div>
                     </div>
                 </div>
@@ -418,7 +628,7 @@
                                     <textarea rows="5" cols="10" name="message" placeholder="Message :"></textarea>
                                 </div>
                                 <div class="group">
-                                    <button type="button"><span>Submit <i class="fa fa-paper-plane"></i></span></button>
+                                    <button type="submit"><span>Submit <i class="fa fa-paper-plane"></i></span></button>
                                 </div>
                             </form>
                         </div>
