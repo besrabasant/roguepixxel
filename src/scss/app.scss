@@ -358,36 +358,90 @@ main.container {
                         }
                     }
                     form {
-                        width: 60vw;
-                        position: relative;
-                        top: 50%;
+                        position: absolute;
                         @include transform(translateY(-50%));
-                        margin: 0 auto;
-                        padding-left: 20%;
                         color: $primary-bg-color;
                         font-size: 2.5em;
+                        top: 50%;
+                        left: 45%;
+                        margin: 0 -50% 0 auto;
+                        transform: translate(-50%, -50%);
                         .group {
-                            overflow: hidden;
+                            overflow: visible;
                             width: 100%;
-                            label {
-                                width: 100%;
-                            }
-                            select {
-                                color: $theme-green;
-                                border: none;
-                                box-shadow: none;
-                                background: transparent;
-                                background-image: none;
-                                -webkit-appearance: none;
-                                cursor: pointer;
-                                outline: none;
-                                option {
-                                    box-shadow: none;
-                                    background-color: transparent;
-                                    background-image: none;
-                                    -webkit-appearance: none;
-                                    cursor: pointer;
+                            text-align: center;
+                            //label {
+                            //    width: 100%;
+                            //    font-size: 5rem;
+                            //}
+                            //select {
+                            //    color: $theme-green;
+                            //    border: none;
+                            //    box-shadow: none;
+                            //    background: transparent none;
+                            //    -webkit-appearance: none;
+                            //    cursor: pointer;
+                            //    outline: none;
+                            //    option {
+                            //        box-shadow: none;
+                            //        background: transparent none;
+                            //        -webkit-appearance: none;
+                            //        cursor: pointer;
+                            //    }
+                            //}
+                            .btitle{
+                                position: relative;
+                                float: left;
+                                text-align: right;
+                                h1{
+                                    font-size: 4vw;
                                 }
+                            }
+                            .blist{
+                                position : relative;
+                                float: left;
+                                text-align: left;
+                            }
+                            ul#featuresList{
+                                position: absolute;
+                                top:2.6vw;
+                                visibility: inherit;
+                                opacity: 0;
+                                list-style:none;
+                                font-size: 4vw;
+                                text-align:left;
+                                margin:0;
+                                padding: 0 0 0 .5vw;
+                                height : auto;
+                                width: 34vw;
+                                perspective: 400px;
+                                li{
+                                    /*   height: 48px; */
+                                    position: absolute;
+                                    margin-bottom: 10px;
+                                }
+                            }
+                            a{
+                                position: relative;
+                                top: 2.6vw;
+                                left: 35vw;
+                                opacity:0;
+                                font-size: 2vw;
+                                color: #ffffff;
+                                text-decoration: none;
+                            }
+                            a:hover{
+                                color:#91e600;
+                                text-shadow:0px 0px 10px #00ff00;
+                            }
+                            span {
+                                position: absolute;
+                                left: 14px;
+                                top: 2.5vw;
+                                font-size: 4vw;
+                                color: #91e600;
+                                text-shadow: 0 0 40px #0f0;
+                                cursor: pointer;
                             }
                         }
                     }
