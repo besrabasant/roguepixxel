@@ -1,6 +1,8 @@
 import { TweenMax, TimelineMax } from "gsap";
+import { Lethargy } from "lethargy";
 import { DomListeners } from "../dom-listeners.js";
 import { App } from "../app.js";
+var $ = require("jquery");
 
 function detachListeners(opt = false) {
     DomListeners.detachScrollListeners(App.scrollPage, opt);
@@ -35,6 +37,69 @@ export class servicesPageAnimation {
         getAQuote.addEventListener('click', servicesPageAnimation.openQuotesForm, false);
         closeQuoteForm.addEventListener('click', servicesPageAnimation.closeQuotesForm, false);
 
+
+        const lethargy = new Lethargy();
+        const Go = document.getElementById("go");
+
+        let controller_timeline,listTimeline,menu_timeline,
+            featuresList = $('#featuresList'),
+            featuresListItems = $('#featuresList li');
+        function buildMenuTimeline() {
+            menu_timeline  = new TimelineMax({paused:true});
+            menu_timeline.set([featuresList], {autoAlpha:1});
+            featuresListItems.each(function(index, element){
+                listTimeline = new TimelineMax({});
+                listTimeline
+                    .from(element, 2, {rotationX:-90,  transformOrigin:"50% 50% -355",alpha:0, ease:Linear.easeNone})
+                    .from($('a#go'), .5, {alpha:0}, "-=2")
+                    .to($('span#ano'), .5, {alpha:0, ease:Power1.easeIn}, "-=2")
+                    .to($('a#go'), .5, {alpha:1}, "-=2")
+                    .to(element, 1.7, {alpha:.5, ease:Power1.easeIn}, "-=2")
+                    .to(element, 0.1, {color:"#91e600", alpha:1, textShadow:"0px 0px 40px #00ff00",className: 'active', ease:Linear.easeNone}, "-=0.1")
+                    .to(element, 2, {className: "",rotationX:90, transformOrigin:"50% 50% -355", ease:Linear.easeNone}, 2)
+                    .to(element, 0.1, {color:"#fff", textShadow:"0px 0px 0px #000000",alpha:.5, ease:Linear.easeNone}, 2)
+                menu_timeline.add(listTimeline,  0.25 * index)
+            });
+        }
+
+        function buildControllerTimeline() {
+            controller_timeline = new TimelineMax({onUpdate:() => {
+                let link = $("#featuresList li.active").attr('id');
+                Go.setAttribute("href", ""+link+".pdf");
+            },paused:true});
+            buildMenuTimeline();
+            controller_timeline
+                .to(menu_timeline, 0.8, {time:2, ease:Power1.easeOut} )
+                .addPause()
+                .to(menu_timeline, 0.2,  {time:2.25, ease:Power1.easeOut})
+                .addPause()
+                .to(menu_timeline, 0.2, {time:2.5, ease:Power1.easeOut})
+                .addPause()
+                .to(menu_timeline, 0.2, {time:2.75, ease:Power1.easeOut} )
+                .addPause()
+                .to(menu_timeline, 0.2, {time:3, ease:Power1.easeOut} )
+                .addPause()
+        }
+
+        $("#quote_form").bind('mousewheel DOMMouseScroll wheel MozMousePixelScroll',function(e){
+
+            e.preventDefault();
+            e.stopPropagation();
+            let delta = lethargy.check(e);
+            if(delta !==false){
+                if(delta == -1){
+                    controller_timeline.play();
+                }else if(delta == 1){
+                    controller_timeline.reverse();
+                }
+            }
+        });
+        buildControllerTimeline();
+
+        $('span#ano').click(function(){
+            controller_timeline.play();
+        });
+
         for (var i = 0; i < services.length; i++) {
             services[i].children[0].addEventListener('mouseover', servicesPageAnimation.changeBackground, false);
             services[i].children[0].addEventListener('mouseleave', servicesPageAnimation.restoreBackground, false);
@@ -49,7 +114,6 @@ export class servicesPageAnimation {
         document.querySelector('.container').style.zIndex = 1500;
         detachListeners(true);
     }
-
     static closeQuotesForm(e) {
         var quoteForm = document.getElementById('quote_form');
         TweenMax.to(quoteForm, 0.5, { zIndex: '-1', opacity: '0' });
@@ -68,6 +132,7 @@ export class servicesPageAnimation {
         for (var i = 0; i < services.length; i++) {
             services[i].children[0].removeEventListener('click', servicesPageAnimation.showServiceDetails, false);
             TweenMax.to(services[i], 0.5, { delay: 0.08, opacity: '0', ease: Power2.EaseOut });
+            TweenMax.to(serviceBgWrapper, 0.5, { '-webkit-filter': 'blur(5px)', filter: 'blur(5px)',transform: 'scale(1)'});
             if (services[i] == service)
                 serviceBgWrapper.style.backgroundImage = document.querySelectorAll('.bg_image')[i].style.backgroundImage;
         }
@@ -126,6 +191,7 @@ export class servicesPageAnimation {
                     attachListeners(true);
                 }
             })
+            .to(serviceBgWrapper, 0.5, { '-webkit-filter': 'blur(0px)', filter: 'blur(0px)',transform: 'scale(1.05)'})
 
         hideServiceDetailsTimeline.play();
     }
