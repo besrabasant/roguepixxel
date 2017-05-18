@@ -191,7 +191,7 @@ export class servicesPageAnimation {
                     attachListeners(true);
                 }
             })
-            .to(serviceBgWrapper, 0.5, { '-webkit-filter': 'blur(0px)', filter: 'blur(0px)',transform: 'scale(1.05)'})
+            .to(serviceBgWrapper, 0.2, { '-webkit-filter': 'blur(0px)', filter: 'blur(0px)',transform: 'scale(1.02)'})
 
         hideServiceDetailsTimeline.play();
     }

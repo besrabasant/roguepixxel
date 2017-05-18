@@ -3,6 +3,8 @@ import { navMenu } from "./navMenu";
 import { homescene, pagesAnimation } from './pagesAnimation';
 import works from "./worksScene";
 
+homescene.start();
+
 var navmenu = new navMenu(document.querySelector('.navmenu'));
 export var revealer = new Revealer();
 

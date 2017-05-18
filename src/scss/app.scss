@@ -1,11 +1,15 @@
 @import 'variables/color';
 @import 'components/mixins';
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600|Playfair+Display:400,700');
 html,
 body {
     overflow: hidden;
-    font-family: 'Source Sans Pro';
+    font-family: 'Titillium Web', serif;
 }
-
+h1,h2,h3,h4,h5{
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+}
 main.container {
     width: 100vw;
     height: 100vh;
@@ -198,7 +202,7 @@ main.container {
                             width: 23%;
                         }
                         .details {
-                            font-size: 1em;
+                            font-size: 1.3em;
                             line-height: 1.2;
                             left: 42.65%;
                             width: 33%;
@@ -697,10 +701,10 @@ main.container {
             position: absolute;
             top: 0;
             padding: 15vh 20% 0;
+            text-shadow: 0 3px 7px #1c5220;
             text-align: center;
             @include box-sizing(border-box);
-            background-image: url('../../dist/img/about-us.jpg');
-            background-repeat: no-repeat;
+            background: url('../../dist/img/about-us.jpg') no-repeat;
             background-size: cover;
             h1 {
                 position: relative;
@@ -710,16 +714,19 @@ main.container {
             h3 {
                 color: $primary-bg-color;
                 position: relative;
-                font-size: 1.7em;
+                font-size: 2em;
                 font-weight: lighter;
             }
             p {
                 color: $primary-bg-color;
                 position: relative;
-                font-size: 1.1em;
+                font-size: 1.5em;
                 line-height: 1.5;
                 &.contact-details {
                     margin-top: 10vh;
+                    span{
+                        color: #52b43c;
+                    }
                 }
             }
         }

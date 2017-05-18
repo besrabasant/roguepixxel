@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Cache-control" content="public,max-age=31536000">
     <title>Rogue Pixxel | Web</title>
-    <meta name="description" content="A small website development company from Ranchi, Jharkhand to amplify your big dreams. We focus on your expression of work and project it on the internet.">
+    <meta name="description" content="A website development company from Ranchi, Jharkhand to amplify your big dreams. We focus on your expression of work and project it on the internet.">
     <meta name="keywords" content=" leading, good, best, website, websites, web development,mobile app,software, applications, development, in, ranchi, jharkhand, india, argora, digital, marketing, android app, mobile, mobile application, e-commerce, online store, seo in ranchi, all type of website development, website developer, brand, promotion">
     <meta name="author" content="the Rogue Pixxel">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -90,6 +90,19 @@
             background-color: #272727;
             z-index: 1991;
         }
+        #loader-bg .loader{
+            position: absolute;
+            width:100%;
+            top: calc(50% - 300px);
+            text-align: center;
+        }
+        .loader h2{
+            color: #fff;
+            font-family: "Roboto";
+        }
+        #loader-bg .loader svg {
+            height: 300px;
+        }
         
         #loader-bg.loaded {
             -webkit-animation: loaded 1s linear 0s forwards;
@@ -126,7 +139,45 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <div id="loader-bg">
+        <div class="loader">
+            <svg id="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="-50 -130 300 300" width="200" height="200">
+                <defs>
+                    <style>
+                        g#la{
+                            transform-origin: center;
+                            animation: rotatelg 5s infinite;
+                        }
+                        .cls-1{fill:#68ed00;fill-opacity:0.7;}
+                        .cls-2{fill:#68ed00;}
+                        #SmallSq{
+                            animation: mymove 5s infinite;
+                            transform-origin: 100% 100%;
+                        }
 
+                        @keyframes mymove {
+                            0% {transform: scale(.6);}
+                            25% {transform: scale(1);}
+                            50% {transform: scale(1);}
+                            75% {transform: scale(.6);}
+                            100% {transform: scale(.6);}
+                        }
+                        @keyframes rotatelg {
+                            0% {transform: rotate(0deg);}
+                            25% {transform: rotate(180deg);}
+                            50% {transform: rotate(180deg);}
+                            75% {transform: rotate(360deg);}
+                            100% {transform: rotate(360deg);}
+                        }
+                    </style>
+                </defs>
+                <title>logoAnimated</title>
+                <g id="la">
+                    <polygon id="BgSq" class="cls-1" points="0 0 158 0 158 155 0 154.5 0 0"/>
+                    <polygon id="SmallSq" class="cls-2" points="0 0 158 0 158 155 0 154.5 0 0"/>
+                </g>
+            </svg>
+            <h2>the, rogue Pix<small>x</small>el</h2>
+        </div>
     </div>
 
 
@@ -160,7 +211,7 @@
                     <p>The Rogue Pix<small>x</small>el is a web and media development company. We offer websites, mobile applications, softwares, and media production for small to large scale industries. We are committed to take advantage of the every possible
                         tools available in digital space. We are stationed at Ranchi Jharkhand, INDIA with capabilities to provide our services worldwide.</p>
 
-                    <p class="contact-details">Call us: 960-880-8008
+                    <p class="contact-details">Call us: <span>960-880-8008</span>
                         <br> Drop by: rogue pixxel IT Solutions, Pundag, Ranchi, Jharkhand, INDIA.</p>
                 </div>
             </section>
@@ -614,7 +665,10 @@
                             </ul>
                         </div>
                         <div id="social_feeds">
-                            <span>Social Feeds :</span>
+                            <span>Social :</span>
+                            <!-- SnapWidget -->
+                            <script src="https://snapwidget.com/js/snapwidget.js"></script>
+                            <iframe src="https://snapwidget.com/embed/code/256562" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; "></iframe>
                         </div>
                         <div id="contact_form_wrap">
                             <h3>Say Hello!</h3>
