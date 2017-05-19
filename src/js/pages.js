@@ -3,7 +3,6 @@ import { navMenu } from "./navMenu";
 import { homescene, pagesAnimation } from './pagesAnimation';
 import works from "./worksScene";
 
-homescene.start();
 
 var navmenu = new navMenu(document.querySelector('.navmenu'));
 export var revealer = new Revealer();
@@ -93,6 +92,7 @@ export class Pages {
 
     getCurrentPage() {
         if (window.location.hash != '') {
+            window.location.hash = '#!home';
             var p;
             for (var index = 0; index < this.pages.length; index++) {
                 this.pages[index].classList.remove('page-current');
