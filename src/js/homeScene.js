@@ -9,7 +9,7 @@ import glitch from "./components/glitch-audio";
 export class homeScene {
     constructor() {
 
-        this.isOn = false;
+        this.isOn = true;
 
         const mouse = new WHS.app.VirtualMouseModule();
 

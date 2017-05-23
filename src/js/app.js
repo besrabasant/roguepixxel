@@ -12,7 +12,7 @@ var feed = new Instafeed({
     userId: '4632033563',
     accessToken: '4632033563.1677ed0.fae5b1cb8c154bacbdb5d240950707eb',
     sortBy:'none',
-    limit: '9',
+    limit: '10',
     after: function () {
         var images = $("#instafeed").find('a');
         $.each(images, function(index, image) {

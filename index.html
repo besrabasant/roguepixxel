@@ -135,6 +135,14 @@
 </head>
 
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -635,34 +643,40 @@
 
                     <div id="maps">
                     </div>
+                    <div id="address">
+                        <address>
+                            <strong>the Rogue Pix<small>x</small>el</strong> IT Solutions,<br>
+                            Pundag, Ranchi,<br>
+                            Jharkhand, INDIA<br>
+                            Pin - 834001
+                        </address>
+                        <a class="tel" href="tel:+919608808008">
+                            <i class="fa fa-lg fa-phone"></i> +91-960-880-8008
+                        </a>
+                        <a class="email" href="mailto:hello@theroguepixel.com" target="_blank">
+                            <i class="fa fa-lg fa-envelope-o"></i> hello@theroguepixel.com
+                        </a>
+                    </div>
                     <div id="contact_area">
-                        <div id="address">
-                            <address>
-                                <strong>the Rogue Pix<small>x</small>el</strong> IT Solutions,<br>
-                                Pundag, Ranchi,<br>
-                                Jharkhand, INDIA<br>
-                                Pin - 834001
-                            </address>
-                            <a class="tel" href="tel:+919608808008">
-                                <i class="fa fa-lg fa-phone"></i> +91-960-880-8008
-                            </a>
-                            <a class="email" href="mailto:hello@theroguepixel.com" target="_blank">
-                                <i class="fa fa-lg fa-envelope-o"></i> hello@theroguepixel.com
-                            </a>
-                        </div>
                         <div id="social">
                             <span>Connect with us :</span>
                             <ul>
                                 <li>
-                                    <a href="#"><i class="fa fa-lg fa-facebook"></i></a>
+                                    <a href="https://www.facebook.com/theroguepixxel/"><i class="fa fa-lg fa-facebook"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-lg fa-twitter"></i></a>
+                                    <a href="https://twitter.com/theroguepixxel"><i class="fa fa-lg fa-twitter"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-lg fa-instagram"></i></a>
+                                    <a href="https://www.instagram.com/theroguepixxel/"><i class="fa fa-lg fa-instagram"></i></a>
                                 </li>
                             </ul>
+                            <div id="widgets">
+                                <div class="fb-follow" style="height: 20px;" data-href="https://www.facebook.com/theroguepixxel" data-layout="button_count" data-size="small" data-show-faces="true"></div>
+                                <a href="https://twitter.com/theroguepixxel" class="twitter-follow-button"  data-show-count="true">Follow</a>
+                                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+                            </div>
                         </div>
                         <div id="social_feeds">
                             <span>Social :</span>
