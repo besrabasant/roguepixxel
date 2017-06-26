@@ -106,16 +106,127 @@ main.container {
                 }
                 #works_detail {
                     font-family: "Source Sans Pro";
-                    position: absolute;
-                    width: 30vw;
-                    height: 50vh;
-                    background-color: rgba($dark-bg-color, 0.8);
-                    bottom: 3%;
-                    left: 3%;
-                    border-left: 6px solid $theme-green;
+                    //position: absolute;
+                    position: relative;
+                    //width: 30vw;
+                    //height: 50vh;
+                    width:100%;
+                    height:100%;
+                    //background-color: rgba($dark-bg-color, 0.8);
+                    top:1%;
+                    //bottom: 3%;
+                    //left: 3%;
+                    //border-left: 6px solid $theme-green;
                     color: $primary-bg-color;
                     @include box-sizing(border-box);
                     padding: 10px;
+                    .port-image {
+                        width: 100%;
+                    }
+                    .row {
+                        position: relative;
+                        height: 100%;
+                        margin: auto;
+                        width: 80%;
+                        text-align: center;
+                        overflow: auto;
+                    }
+                    .col-md-3 {
+                        width: 21%;
+                        float: left;
+                        padding: 2%;
+                    }
+                    .each-item {
+                        position: relative;
+                        overflow: hidden;
+                        &:hover {
+                            .cap2 {
+                                left: 0px;
+                            }
+                            .cap1 {
+                                left: 0px;
+                            }
+                        }
+                    }
+                    .cap1 {
+                        position: absolute;
+                        width: 100%;
+                        height: calc(70% - 20px);
+                        background: rgba(75, 75, 75, 0.5);
+                        top: 0px;
+                        left: -100%;
+                        padding: 10px 0;
+                        z-index: 1;
+                        transition: all .5s;
+                        text-align: center;
+                        h3{
+                            font-size: 1.7em;
+                            color: #f7f7f7;
+                        }
+                        p{
+                            color: #e5e5e5;
+                        }
+                    }
+                    .cap2 {
+                        position: absolute;
+                        width: 100%;
+                        height: calc(30% - 20px);
+                        background: rgba(82, 180, 60, 0.75);
+                        bottom: 0px;
+                        left: 100%;
+                        padding: 10px 10px 10px 0;
+                        transition: all .5s;
+                        a{
+                            color: #e5e5e5;
+                            text-decoration: none;
+                        }
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
+                    #filter-buttons {
+                        text-align: center;
+                        >ul {
+                            display: inline-block;
+                            list-style-type: none;
+                            position: relative;
+                            margin-bottom: 0;
+                            padding: 0;
+                            border-bottom: 1px solid #aaaaaa;
+                            &:before {
+                                position: absolute;
+                                content: '';
+                                border-left: 2px solid #aaa;
+                                height: 40px;
+                                bottom: -40px;
+                                left: 50%;
+                            }
+                            >li {
+                                display: inline-block;
+                                float: left;
+                            }
+                            >li.active {
+                                border-bottom: 1px solid $theme-green;
+                                a{
+                                    color: $theme-green;
+                                }
+                            }
+                        }
+                    }
+                    a.filter-button {
+                        display: inline-block;
+                        padding: 5px 30px;
+                        text-decoration: none;
+                        font-size: 1.2rem;
+                        color: #a5a5a5;
+                        font-family: "Roboto";
+                        font-weight: 300;
+                    }
+                    .filter {
+                        &:nth-child(n+9) {
+                            display: none;
+                        }
+                    }
                     article {
                         position: absolute;
                         left: 0;
@@ -800,6 +911,7 @@ main.container {
         }
         #works>.page-components-container {
             padding-top: 50px;
+            background: #5f6061;
         }
         #services>.page-components-container {
             background-color: $dark-bg-color;

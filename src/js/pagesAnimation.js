@@ -49,9 +49,9 @@ export class pagesAnimation {
             case 'about-us':
                 this.animateAboutUspage(page, direction);
                 break;
-            case 'works':
-                this.animateWorkspage(page, direction);
-                break;
+            // case 'works':
+            //     this.animateWorkspage(page, direction);
+            //     break;
             case 'services':
                 this.animateServicespage(page, direction);
                 break;

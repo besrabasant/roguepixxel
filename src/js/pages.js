@@ -1,7 +1,7 @@
 import { Revealer } from "./revealer";
 import { navMenu } from "./navMenu";
 import { homescene, pagesAnimation } from './pagesAnimation';
-import works from "./worksScene";
+// import works from "./worksScene";
 
 
 var navmenu = new navMenu(document.querySelector('.navmenu'));
@@ -59,7 +59,7 @@ export class Pages {
             if ('#!' + this.pages[index].id == window.location.hash) {
                 this.goToPage(this, index);
             }
-        };
+        }
     }
 
     scrollAnimationCallback(pages = this) {
@@ -81,9 +81,9 @@ export class Pages {
         if (window.location.hash == '#!home') {
             homescene.start();
         }
-        if (window.location.hash == '#!works') {
-            works.start();
-        }
+        // if (window.location.hash == '#!works') {
+        //     works.start();
+        // }
     }
 
     getCurrentPageIndex() {
