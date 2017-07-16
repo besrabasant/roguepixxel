@@ -1,7 +1,8 @@
 import { Revealer } from "./revealer";
 import { navMenu } from "./navMenu";
 import { homescene, pagesAnimation } from './pagesAnimation';
-import works from "./worksScene";
+// import works from "./worksScene";
+
 
 var navmenu = new navMenu(document.querySelector('.navmenu'));
 export var revealer = new Revealer();
@@ -58,7 +59,7 @@ export class Pages {
             if ('#!' + this.pages[index].id == window.location.hash) {
                 this.goToPage(this, index);
             }
-        };
+        }
     }
 
     scrollAnimationCallback(pages = this) {
@@ -80,9 +81,6 @@ export class Pages {
         if (window.location.hash == '#!home') {
             homescene.start();
         }
-        if (window.location.hash == '#!works') {
-            works.start();
-        }
     }
 
     getCurrentPageIndex() {
@@ -91,6 +89,7 @@ export class Pages {
 
     getCurrentPage() {
         if (window.location.hash != '') {
+            window.location.hash = '#!home';
             var p;
             for (var index = 0; index < this.pages.length; index++) {
                 this.pages[index].classList.remove('page-current');

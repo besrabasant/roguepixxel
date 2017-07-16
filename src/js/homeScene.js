@@ -9,7 +9,7 @@ import glitch from "./components/glitch-audio";
 export class homeScene {
     constructor() {
 
-        this.isOn = false;
+        this.isOn = true;
 
         const mouse = new WHS.app.VirtualMouseModule();
 
@@ -70,11 +70,11 @@ export class homeScene {
         const light = new WHS.PointLight({
             light: {
                 color: 0xffffff,
-                intensity: 2,
-                distance: 50
+                intensity: 0.8,
+                distance: 200
             },
 
-            position: (Utils.isMobileDevice()) ? [0, -20, 120] : [150, 0, 130],
+            position: (Utils.isMobileDevice()) ? [0, -20, 200] : [150, 80, 200],
             castShadow: false,
         });
         light.addTo(this.world);
@@ -125,7 +125,7 @@ export class homeScene {
 
         document.addEventListener('mousemove', function() {
             plexus.component.onMouseMove(mouse.project());
-            mousepos = mouse.project().multiplyScalar(0.1);
+            mousepos = mouse.project().multiplyScalar(0.2);
         });
 
         // logo
@@ -133,7 +133,7 @@ export class homeScene {
         const logo = new Logo();
         logo.addTo(this.world);
 
-        //titles 
+        //titles
         titles.addTo(this.world);
 
 
@@ -143,14 +143,13 @@ export class homeScene {
                 logo.animate();
             }
 
-            camera.camera.position.x += 2 + (mousepos.x - camera.camera.position.x) * 0.05;
-            camera.camera.position.y += -3 + (mousepos.y - camera.camera.position.y) * 0.05;
+            camera.camera.position.x += (mousepos.x - camera.camera.position.x) * 0.02;
+            // camera.camera.position.y += -3 + (mousepos.y - camera.camera.position.y) * 0.05;
             camera.camera.native.lookAt(new THREE.Vector3(0, 0, 0));
         });
         loop.start(this.world);
 
         // glitch
-
 
         glitch.addListener(camera.camera);
 

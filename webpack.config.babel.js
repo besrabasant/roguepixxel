@@ -13,7 +13,7 @@ const extractCss = new ExtractTextPlugin('../css/style.css');
 const config = {
     entry: {
         app: path.resolve(__dirname, 'src/entry.js'),
-        vendor: ['pace-progress', 'lethargy', 'hammerjs', 'gsap', 'mobile-detect'],
+        vendor: ['pace-progress', 'lethargy', 'hammerjs', 'gsap', 'mobile-detect', 'jquery'],
         whs: ['whs', 'physics-module-ammonext']
     },
     output: {

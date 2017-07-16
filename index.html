@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Cache-control" content="public,max-age=31536000">
     <title>Rogue Pixxel | Web</title>
-    <meta name="description" content="A small website development company from Ranchi, Jharkhand to amplify your big dreams. We focus on your expression of work and project it on the internet.">
+    <meta name="description" content="A website development company from Ranchi, Jharkhand to amplify your big dreams. We focus on your expression of work and project it on the internet.">
     <meta name="keywords" content=" leading, good, best, website, websites, web development,mobile app,software, applications, development, in, ranchi, jharkhand, india, argora, digital, marketing, android app, mobile, mobile application, e-commerce, online store, seo in ranchi, all type of website development, website developer, brand, promotion">
     <meta name="author" content="the Rogue Pixxel">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -90,6 +90,19 @@
             background-color: #272727;
             z-index: 1991;
         }
+        #loader-bg .loader{
+            position: absolute;
+            width:100%;
+            top: calc(50% - 300px);
+            text-align: center;
+        }
+        .loader h2{
+            color: #fff;
+            font-family: "Roboto";
+        }
+        #loader-bg .loader svg {
+            height: 300px;
+        }
         
         #loader-bg.loaded {
             -webkit-animation: loaded 1s linear 0s forwards;
@@ -122,11 +135,57 @@
 </head>
 
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
     <div id="loader-bg">
+        <div class="loader">
+            <svg id="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="-50 -130 300 300" width="200" height="200">
+                <defs>
+                    <style>
+                        g#la{
+                            transform-origin: center;
+                            animation: rotatelg 5s infinite;
+                        }
+                        .cls-1{fill:#68ed00;fill-opacity:0.7;}
+                        .cls-2{fill:#68ed00;}
+                        #SmallSq{
+                            animation: mymove 5s infinite;
+                            transform-origin: 100% 100%;
+                        }
 
+                        @keyframes mymove {
+                            0% {transform: scale(.6);}
+                            25% {transform: scale(1);}
+                            50% {transform: scale(1);}
+                            75% {transform: scale(.6);}
+                            100% {transform: scale(.6);}
+                        }
+                        @keyframes rotatelg {
+                            0% {transform: rotate(0deg);}
+                            25% {transform: rotate(180deg);}
+                            50% {transform: rotate(180deg);}
+                            75% {transform: rotate(360deg);}
+                            100% {transform: rotate(360deg);}
+                        }
+                    </style>
+                </defs>
+                <title>logoAnimated</title>
+                <g id="la">
+                    <polygon id="BgSq" class="cls-1" points="0 0 158 0 158 155 0 154.5 0 0"/>
+                    <polygon id="SmallSq" class="cls-2" points="0 0 158 0 158 155 0 154.5 0 0"/>
+                </g>
+            </svg>
+            <h2>the, rogue Pix<small>x</small>el</h2>
+        </div>
     </div>
 
 
@@ -160,56 +219,169 @@
                     <p>The Rogue Pix<small>x</small>el is a web and media development company. We offer websites, mobile applications, softwares, and media production for small to large scale industries. We are committed to take advantage of the every possible
                         tools available in digital space. We are stationed at Ranchi Jharkhand, INDIA with capabilities to provide our services worldwide.</p>
 
-                    <p class="contact-details">Call us: 960-880-8008
+                    <p class="contact-details">Call us: <span>960-880-8008</span>
                         <br> Drop by: rogue pixxel IT Solutions, Pundag, Ranchi, Jharkhand, INDIA.</p>
                 </div>
             </section>
             <section id="works" class="page">
                 <div class="page-components-container">
-                    <div id="works_nav">
-                        <ul>
-                            <li id="previous_work">
-                                <a href="#"><i class="fa fa-2x fa-angle-left"></i></a>
-                            </li>
-                            <li id="next_work">
-                                <a href="#"><i class="fa fa-2x fa-angle-right"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="works_viewer">
+                    <!--<div id="works_viewer"></div>-->
+                        <div class="container">
+                            <div id="filter_buttons">
+                                <ul>
+                                    <li class="active"><a class="filter-button" href="#" data-filter="all">All</a></li>
+                                    <li><a class="filter-button" href="#" data-filter="graphic">Graphic Design</a></li>
+                                    <li><a class="filter-button" href="#" data-filter="visualization">Visualization</a></li>
+                                    <li><a class="filter-button" href="#" data-filter="webdesign">Website</a></li>
+                                </ul>
+                            </div>
+                            <br/>
 
-                    </div>
-                    <div id="works_detail">
-                        <article>
-                            <h3>PRANA Lounge
-                                <a class="visit" href="http://www.pranalounge.in" title="Visit the Website" target="_blank"> <i class="fa fa-external-link"></i> </a>
-                            </h3>
-                            <p>
-                                <span class="detail">PRANA is a beautiful exclusive restaurant and lounge with cherish advantage of rooftop bar. Clearly, it's one of the beautiful unique places to be in our town Ranchi. For the website design we got our best possible designs
-                                    together to be up to the standards of Prana Lounge. After getting the designs together, Website development was completed by the cocktail of web technologies and our skills. Visit the website to feel the charm and drop by at Prana lounge while in Ranchi.
-</span>
-                            </p>
-                        </article>
-                        <article>
-                            <h3>KGBV Lapung
-                                <a class="visit" href="http://kgbvlapung.in/" title="Visit the Website" target="_blank"> <i class="fa fa-external-link"></i> </a>
-                            </h3>
-                            <p>
-                                <span class="detail">The KGBV(Kasturba Gandhi Balika vidyalaya) Schools exists in almost each area with objective to diminish the significant education gap between Genders due to disparity and poverty. We were approached by a KGBV School from
-                                    Lapung for a informational detailed website for their school, providing the details of School, Staff &amp; Students for the officials and general public to see and assess. So we needed a design to display school Achievements,
-                                    Events, Activities, Participation's with Statical performance and we came out with this simple yet elegant website.
-</span>
-                            </p>
-                        </article>
-                        <article>
-                            <h3>Aadhar Merchandise Ltd
-                                <a class="visit" href="http://amlimited.in/" title="Visit the Website" target="_blank"> <i class="fa fa-external-link"></i> </a>
-                            </h3>
-                            <p>
-                                <span class="detail">Aadhar Merchandise Ltd. is a marketing and distributor agency based in Ranchi that sells products of your daily needs. Visit the website to know more.</span>
-                            </p>
-                        </article>
-                    </div>
+                            <div class="row" id="works_details">
+                                <div class="col-md-3 filter graphic">
+                                    <div class="each-item">
+                                        <img class="port-image" src="dist/img/works/graphicDesign.jpg" alt="Graphics Design in Ranchi"/>
+                                        <div class="cap1">
+                                            <h3>Brochure Design</h3>
+                                            <p>Custom Brochure Design For featuring new Ideas & Design.</p>
+                                        </div>
+                                        <div class="cap2">
+                                            <a target="_blank" href="https://www.facebook.com/theroguepixxel/posts/1842428396006632"><p class="text-center">View more</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 filter visualization">
+                                    <div class="each-item">
+                                        <img class="port-image" src="dist/img/works/visualization.jpg" alt="3D Architecture Visualization Rendering in Ranchi"/>
+                                        <div class="cap1">
+                                            <h3>Architectural Walk-through</h3>
+                                            <p>3D office Visualization of our office premises.</p>
+                                        </div>
+                                        <div class="cap2">
+                                            <a target="_blank" href="https://www.facebook.com/theroguepixxel/videos/1839939839588821/"><p class="text-center">View</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 filter webdesign">
+                                    <div class="each-item">
+                                        <img class="port-image" src="dist/img/works/website.jpg" alt="Website Design/Development in Ranchi"/>
+                                        <div class="cap1">
+                                            <h3>PRANA Website Development</h3>
+                                            <p>Website Design & Development for Prana Lounge, Ranchi.</p>
+                                        </div>
+                                        <div class="cap2">
+                                            <a target="_blank" href="http://pranalounge.in"><p class="text-center">Visit</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 filter graphic">
+                                    <div class="each-item">
+                                        <img class="port-image" src="dist/img/works/graphicDesign1.jpg" alt="Graphics Design in Ranchi"/>
+                                        <div class="cap1">
+                                            <h3>Logo Design</h3>
+                                            <p>Logo Designing for Prana Rooftop, Ranchi.</p>
+                                        </div>
+                                        <div class="cap2">
+                                            <a target="_blank" href="https://www.facebook.com/media/set/?set=a.1835879499994855.1073741836.1664875990428541&type=3"><p class="text-center">Visit</p></a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-3 filter visualization">
+                                    <div class="each-item">
+                                        <img class="port-image" src="dist/img/works/visualization1.jpg" alt="Video Advertisement Production in Ranchi"/>
+                                        <div class="cap1">
+                                            <h3>Website visualization</h3>
+                                            <p>Website presentation of Media Express<br>Media Express is an innovative 360 Degree Marketing & Communications solutions provider founded recently in Ranchi, Jharkhand.</p>
+                                        </div>
+                                        <div class="cap2">
+                                            <a target="_blank" href="https://www.facebook.com/theroguepixxel/videos/1822948684621270/"><p class="text-center">View</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 filter webdesign">
+                                    <div class="each-item">
+                                        <img class="port-image" src="dist/img/works/website1.jpg" alt="Website Design/Development in Ranchi"/>
+                                        <div class="cap1">
+                                            <h3>KGBV Website Development</h3>
+                                            <p>A Simple yet Elegant Website Development for KGBV Lapung.</p>
+                                        </div>
+                                        <div class="cap2">
+                                            <a target="_blank" href="http://kgbvlapung.in"><p class="text-center">Visit</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 filter graphic">
+                                    <div class="each-item">
+                                        <img class="port-image" src="dist/img/works/graphicDesign2.jpg" alt="Graphics Design in Ranchi"/>
+                                        <div class="cap1">
+                                            <h3>Logo Design for THE NEXT IMAGE</h3>
+                                            <p>"THE NEXT IMAGE" is a leading name in professional photography/videography in Ranchi.</p>
+                                        </div>
+                                        <div class="cap2">
+                                            <a target="_blank" href="https://www.facebook.com/theroguepixxel/posts/1850662741849864"><p class="text-center">View more</p></a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-3 filter hide visualization">
+                                    <div class="each-item">
+                                        <img class="port-image" src="dist/img/works/visualization3.jpg" alt="3D Architecture Visualization Rendering in Ranchi"/>
+                                        <div class="cap1">
+                                            <h3>Architectural Visualization</h3>
+                                            <p>3D Visualization of a Modular Kitchen Design.</p>
+                                        </div>
+                                        <div class="cap2">
+                                            <a target="_blank" href="https://www.facebook.com/theroguepixxel/videos/1831342800448525/"><p class="text-center">View</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 filter webdesign">
+                                    <div class="each-item">
+                                        <img class="port-image" src="dist/img/works/website2.jpg" alt="Website Design/Development in Ranchi"/>
+                                        <div class="cap1">
+                                            <h3>Website development for A.M Ltd</h3>
+                                            <p>Website Design & Development for Aadhar Merchandise Ltd. Ranchi</p>
+                                        </div>
+                                        <div class="cap2">
+                                            <a target="_blank" href="http://theroguepixel.com/demo/amlimited"><p class="text-center">Visit</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 filter graphic">
+                                    <div class="each-item">
+                                        <img class="port-image" src="dist/img/works/graphicDesign3.jpg" alt="Graphics Design in Ranchi"/>
+                                        <div class="cap1">
+                                            <h3>Business Card Design</h3>
+                                            <p>Business Card Design for "THE NEXT IMAGE". Ranchi</p>
+                                        </div>
+                                        <div class="cap2">
+                                            <a target="_blank" href="https://www.facebook.com/theroguepixxel/photos/a.1771181366464669.1073741828.1664875990428541/1850664015183070/?type=3"><p class="text-center">View more</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 filter visualization">
+                                    <div class="each-item">
+                                        <img class="port-image" src="dist/img/works/visualization4.jpg" alt="3D Architecture Visualization Rendering in Ranchi"/>
+                                        <div class="cap1">
+                                            <h3>Sahibganj bridge 3d</h3>
+                                            <p>3D visualization of Sahibganj-Manihari Ganga bridge for N.H.A.I.</p>
+                                        </div>
+                                        <div class="cap2">
+                                            <a target="_blank" href="https://www.facebook.com/theroguepixxel/videos/1817811008468371/"><p class="text-center">View</p></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </section>
             <section id="services" class="page">
@@ -221,8 +393,8 @@
                         <div class="bg_image" style="background-image: url('dist/img/services-ecomm.jpg');"></div>
                         <div class="bg_image" style="background-image: url('dist/img/services-dm.jpg');"></div>
                         <div class="bg_image" style=" background-image: url('dist/img/services-seo.jpg');"></div>
-                        <div id="green_overlay"></div>
                     </div>
+                    <div id="green_overlay"></div>
                     <div id="services_wrapper">
 
                         <div id="services/websites" class="service_block">
@@ -253,7 +425,7 @@
                                 <h4>Why?</h4>
                                 <ul>
                                     <li><span>A good website helps you establish credibility as a business.</span></li>
-                                    <li><span>It gives the impression of a larger quality business company.</li>
+                                    <li><span>It gives the impression of a larger quality business company.</span></li>
                                     <li><span>Clearly, there are a lot of small businesses that do not have website. There are various reason for this, but mostly it comes down to the belief that websites are expensive. In truth a website can be built for very little money and is cost-effective for the business. Remember! you don't need a giant hundred pages website, just a simple website that tells people about your company will be enough.</span></li>
                                 </ul>
                             </div>
@@ -487,16 +659,18 @@
                         <div id="close_quote_form"><span></span><span></span></div>
                         <form>
                             <div class="group">
-                                <label>
-                                    I want to make a
-                                    <select>
-                                        <option value="">Website</option>
-                                        <option value="">Web Application</option>
-                                        <option value="">Mobile Application</option>
-                                        <option value="">Desktop Application</option>
-                                        <option value="">ERP Software</option>
-                                    </select>
-                                </label>
+                                <div class="btitle"><h1>I Need </h1></div>
+                                <div class="blist">
+                                    <span id="ano">?</span>
+                                        <ul id="featuresList">
+                                            <li id="Websites">Website</li>
+                                            <li id="MobileApps">Mobile Apps</li>
+                                            <li id="DigitalMarketing">Digital Marketing</li>
+                                            <li id="WebApps">Web Application</li>
+                                            <li id="E.R.P">E.R.P Management</li>
+                                    </ul>
+                                        <a target="_blank" id="go" href="#"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -582,37 +756,44 @@
 
                     <div id="maps">
                     </div>
+                    <div id="address">
+                        <address>
+                            <strong>the Rogue Pix<small>x</small>el</strong> IT Solutions,<br>
+                            Pundag, Ranchi,<br>
+                            Jharkhand, INDIA<br>
+                            Pin - 834001
+                        </address>
+                        <a class="tel" href="tel:+919608808008">
+                            <i class="fa fa-lg fa-phone"></i> +91-960-880-8008
+                        </a>
+                        <a class="email" href="mailto:hello@theroguepixel.com" target="_blank">
+                            <i class="fa fa-lg fa-envelope-o"></i> hello@theroguepixel.com
+                        </a>
+                    </div>
                     <div id="contact_area">
-                        <div id="address">
-                            <address>
-                                <strong>the Rogue Pix<small>x</small>el</strong> IT Solutions,<br>
-                                Pundag, Ranchi,<br>
-                                Jharkhand, INDIA<br>
-                                Pin - 834001
-                            </address>
-                            <a class="tel" href="tel:+919608808008">
-                                <i class="fa fa-lg fa-phone"></i> +91-960-880-8008
-                            </a>
-                            <a class="email" href="mailto:hello@theroguepixel.com" target="_blank">
-                                <i class="fa fa-lg fa-envelope-o"></i> hello@theroguepixel.com
-                            </a>
-                        </div>
                         <div id="social">
                             <span>Connect with us :</span>
                             <ul>
                                 <li>
-                                    <a href="#"><i class="fa fa-lg fa-facebook"></i></a>
+                                    <a href="https://www.facebook.com/theroguepixxel/"><i class="fa fa-lg fa-facebook"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-lg fa-twitter"></i></a>
+                                    <a href="https://twitter.com/theroguepixxel"><i class="fa fa-lg fa-twitter"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-lg fa-instagram"></i></a>
+                                    <a href="https://www.instagram.com/theroguepixxel/"><i class="fa fa-lg fa-instagram"></i></a>
                                 </li>
                             </ul>
+                            <div id="widgets">
+                                <div class="fb-follow" style="height: 20px;" data-href="https://www.facebook.com/theroguepixxel" data-layout="button_count" data-size="small" data-show-faces="true"></div>
+                                <a href="https://twitter.com/theroguepixxel" class="twitter-follow-button"  data-show-count="true">Follow</a>
+                                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+                            </div>
                         </div>
                         <div id="social_feeds">
-                            <span>Social Feeds :</span>
+                            <span>Social :</span>
+                            <div id="instafeed"></div>
                         </div>
                         <div id="contact_form_wrap">
                             <h3>Say Hello!</h3>
@@ -638,6 +819,16 @@
         </div>
     </main>
 
+<!--<script>-->
+    <!--(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){-->
+            <!--(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),-->
+        <!--m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)-->
+    <!--})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');-->
+
+    <!--ga('create', 'UA-75085268-1', 'auto');-->
+    <!--ga('send', 'pageview');-->
+
+<!--</script>-->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCANaEdO5x3nL8WYSPku5ZTs6a9esanXrg"></script>
     <script type="text/javascript" src="dist/js/whs.bundle.js" charset="utf-8"></script>
     <script type="text/javascript" src="dist/js/vendor.bundle.js" charset="utf-8"></script>
