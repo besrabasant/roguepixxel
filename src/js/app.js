@@ -1,6 +1,7 @@
 import { Lethargy } from "lethargy";
 import { Pages } from "./pages";
 import Instafeed from "instafeed.js"
+import { homescene } from "./pagesAnimation"
 var $ = require("jquery");
 
 
@@ -39,6 +40,7 @@ export class App {
     }
 
     static init(domlisteners) {
+        homescene.start();
         domlisteners.attachScrollListeners(this.scrollPage);
         domlisteners.attachSwipeListeners(this.swipePage);
         domlisteners.attachKeyPressListeners(this.onKeyPress);

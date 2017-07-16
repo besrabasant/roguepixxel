@@ -1,6 +1,5 @@
 import { TweenMax } from "gsap";
 import { homeScene } from "./homeScene";
-// import works from "./worksScene";
 import { worksPageAnimation } from "./page-animations/works-page";
 import { servicesPageAnimation } from "./page-animations/services-page";
 import { contactPageAnimation } from "./page-animations/contact-page";
@@ -97,7 +96,6 @@ export class pagesAnimation {
     static animateWorkspage(page, direction) {
         const worksDetail = page.children[0].children[0].children.filter_buttons;
         const details = document.querySelectorAll('.filter');
-        console.log(worksDetail,  details);
 
         if (direction == 'top') {
 

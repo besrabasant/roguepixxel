@@ -81,9 +81,6 @@ export class Pages {
         if (window.location.hash == '#!home') {
             homescene.start();
         }
-        // if (window.location.hash == '#!works') {
-        //     works.start();
-        // }
     }
 
     getCurrentPageIndex() {
