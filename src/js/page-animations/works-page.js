@@ -49,6 +49,7 @@ export class worksPageAnimation {
 
             }
         });
+        worksRevealer.play();
 
     }
 

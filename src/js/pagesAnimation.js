@@ -1,6 +1,6 @@
 import { TweenMax } from "gsap";
 import { homeScene } from "./homeScene";
-import works from "./worksScene";
+// import works from "./worksScene";
 import { worksPageAnimation } from "./page-animations/works-page";
 import { servicesPageAnimation } from "./page-animations/services-page";
 import { contactPageAnimation } from "./page-animations/contact-page";
@@ -49,9 +49,9 @@ export class pagesAnimation {
             case 'about-us':
                 this.animateAboutUspage(page, direction);
                 break;
-            // case 'works':
-            //     this.animateWorkspage(page, direction);
-            //     break;
+            case 'works':
+                this.animateWorkspage(page, direction);
+                break;
             case 'services':
                 this.animateServicespage(page, direction);
                 break;
@@ -95,28 +95,24 @@ export class pagesAnimation {
     }
 
     static animateWorkspage(page, direction) {
-        const worksNav = page.children[0].children.works_nav;
-        const worksDetail = page.children[0].children.works_detail;
+        const worksDetail = page.children[0].children[0].children.filter_buttons;
+        const details = document.querySelectorAll('.filter');
+        console.log(worksDetail,  details);
 
         if (direction == 'top') {
-            if (!works.isOn) works.start();
 
-            TweenMax.fromTo(worksNav, 0.8, { top: '-10%' }, { top: '8%', ease: Power3.easeOut });
             TweenMax.fromTo(worksDetail, 0.8, { bottom: '40%' }, { bottom: '3%', ease: Power3.easeOut });
-            works.planes.forEach((plane, index) => {
-                TweenMax.fromTo(plane.position, 0.75, { y: '120' }, { y: '0', ease: Power2.easeOut });
-            });
+            TweenMax.staggerFromTo(details, 0.8, { bottom: '40%', opacity: '0' }, { bottom: '3%', opacity: '1', ease: Power3.easeOut }, 0.2);
         }
         if (direction == 'bottom') {
             if (homescene.isOn) homescene.stop();
 
-            if (!works.isOn) works.start();
 
-            TweenMax.fromTo(worksNav, 0.75, { top: '70%' }, { top: '8%', ease: Power3.easeOut });
             TweenMax.fromTo(worksDetail, 0.85, { bottom: '-40%' }, { bottom: '3%', ease: Power3.easeOut });
-            works.planes.forEach((plane, index) => {
-                TweenMax.fromTo(plane.position, 0.75, { y: '-120' }, { y: '0', ease: Power2.easeOut });
-            });
+            TweenMax.staggerFromTo(details, 0.85, { bottom: '-40%', opacity: '0' }, { bottom: '3%', opacity: '1', ease: Power3.easeOut }, 0.2);
+            // works.planes.forEach((plane, index) => {
+            //     TweenMax.fromTo(plane.position, 0.75, { y: '-120' }, { y: '0', ease: Power2.easeOut });
+            // });
         }
     }
 
